@@ -1,13 +1,13 @@
 # TikTok Creative Center Scraper
 
-Your ultimate tool for unlocking high-value, real-time data from the TikTok Creative Center. This Actor is designed for marketers, data analysts, and brands to track viral trends, analyze top-performing ads, discover emerging creators, and find trending songs, hashtags, and keywords directly from the source.
+Your ultimate tool for unlocking high-value, real-time data from the TikTok Creative Center. Designed for marketers, data analysts, and brands, this is the only Actor you need to master the full spectrum of TikTok Creative Center intelligence.
 
 [Start Now (On Apify)](https://apify.com/doliz/tiktok-creative-center-scraper)
 
 ## ✨ Key Features
 
 * **⚡️ Fast & Efficient**: Bypasses slow UI interactions by calling the backend API directly, saving you significant time and platform costs.
-* **🎯 Multi-Target Scraping**: A single Actor to rule them all! Scrape multiple pages from the Creative Center, including:
+* **🎯 All-in-one Scraping**: A single Actor to rule them all! Scrape multiple pages from the Creative Center, including:
     * [Top Ads (Dashboard & Spotlight)](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)
 
       Optional include **details(analytics)** or **keyframe metrics(interactive time analysis)**
@@ -108,6 +108,19 @@ These settings are only used when the `Target` is set to `Keyword Insights (Keyw
 * **Order by** `kexamples_order_by`: (Required) Select the metric for sorting the keyword examples results.
 * **Order type** `kexamples_order_type`: (Required) Select the sorting type for the keyword examples.
 * **Limit** `kexamples_limit`: (Required) Specify the maximum number of keyword examples to retrieve.
+
+---
+
+### ⚙️ Keyword Insights (Related Keywords & Hashtags) Settings
+
+These settings are only used when the `Target` is set to `Keyword Insights (Related Keywords & Hashtags)`.
+
+* **Keyword** `krelated_keyword`: (Required) Get related keywords or hashtags by keyword.
+* **Type** `krelated_type`: (Required) Get related content by type.
+* **Region** `krelated_region`: (Required) Filter results by one or more geographical regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_region.json)
+* **Industry** `krelated_industry`: (Required) Filter keywords by one or more industries. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_industry.json)
+* **Period** `krelated_period`: (Required) Filter keywords by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
+* **limit** `krelated_limit`: (Required) Specify the maximum number of related videos to retrieve.
 
 ---
 
@@ -377,6 +390,24 @@ The Actor returns a dataset of items. The structure of each item depends on the 
         },
         ... /* Other results */
     ]
+    ```
+
+---
+
+### 📊 Keyword Insights (Related Keywords & Hashtags)
+
+`Keyword Insights (Related Keywords & Hashtags)`'s page size is **50**.
+
+- One `List Event`(\$0.1) is consumed per page results retrieved.
+
+    ```json
+      [
+          {
+              "name": "freeshipping",
+              "score": 100
+          },
+          ... /* Other results */
+      ]
     ```
 
 ---
@@ -807,8 +838,8 @@ For target:
 | Top Ads Spotlight                              | 50        |
 | Keyword Insights                               | 50        |
 | Keyword Insights (Related videos)              | 50        |
-| Keyword Insights (Keyword examples)            |           |
-| Keyword Insights (Related Keywords & Hashtags) |           |
+| Keyword Insights (Keyword examples)            | 50        |
+| Keyword Insights (Related Keywords & Hashtags) | 50        |
 | Trending Hashtags                              | 60        |
 | Trending Songs (Popular)                       | 20        |
 | Trending Songs (Breakout)                      | 20        |
