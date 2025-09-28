@@ -11,14 +11,18 @@ Your ultimate tool for unlocking high-value, real-time data from the TikTok Crea
     * [Top Ads (Dashboard & Spotlight)](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)
 
       Optional include **details(analytics)** or **keyframe metrics(interactive time analysis)**
-    * [Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)
-    * [Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)
-    * [Trending Songs (Popular & Breakout)](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)
-
-      Optional include **details(analytics)**
+    * [Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)
+    * [Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)
+    * [Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
+    * [Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
     * [Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)
 
       Optional include **details(analytics)**
+    * [Trending Songs (Popular & Breakout)](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)
+
+      Optional include **details(analytics)**
+    * [Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)
+    * [Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)
 
 * **🔎 Powerful Filtering**: Utilize a rich set of input parameters to precisely target the data you need, mirroring the functionality of the Creative Center website.
 * **🔧 Actively Maintained**: This is a commercial Actor. I am committed to maintaining it to adapt to TikTok's changes and ensure its continued reliability.
@@ -63,27 +67,47 @@ These settings are only used when the `Target` is set to `Top Ads Spotlight`.
 
 ---
 
-### ⚙️ Trending Videos Settings
+### ⚙️ Keyword Insights Settings
 
-These settings are only used when the `Target` is set to `Trending Videos`.
+These settings are only used when the `Target` is set to `Keyword Insights`.
 
-* **Country** `videos_country`: (Required) Select the geographical country for trending videos. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/videos_country.json)
-* **Period** `videos_period`: (Required) Define the time frame for the trending videos data. [Options](https://github.com/lofe-w/tiktok-creative-center-scraper-public/blob/main/options/videos_period.json)
-* **Sort by** `videos_order_by`: (Required) Select the metric for sorting the trending videos. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/videos_order_by.json)
-* **Limit** `videos_limit`: (Required) Specify the maximum number of videos to retrieve.
+* **Search** `keyword_search`: (Optional) Search by keyword.
+* **Region** `keyword_region`: (Optional) Filter results by one or more geographical regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_region.json)
+* **Industry** `keyword_industry`: (Optional) Filter keywords by one or more industries. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_industry.json)
+* **Objective** `keyword_objective`: (Optional) Filter keywords by their campaign marketing objective. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_objective.json)
+* **Keyword type** `keyword_type`: (Optional) Filter keywords by types. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_type.json)
+* **Period** `keyword_period`: (Required) Filter keywords by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
+* **Order by** `keyword_order_by`: (Required) Select the metric for sorting the keyword results. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_order_by.json)
+* **Order type** `keyword_order_type`: (Required) Select the sorting type for the keyword results.
+* **Limit** `keyword_limit`: (Required) Specify the maximum number of keywords to retrieve.
 
 ---
 
-### ⚙️ Trending Creators Settings
+### ⚙️ Keyword Insights (Related videos) Settings
 
-These settings are only used when the `Target` is set to `Trending Creators`.
+These settings are only used when the `Target` is set to `Keyword Insights (Related videos)`.
 
-* **Creators country** `creators_country`: (Required) Select the geographical country of the creators. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creators_country.json)
-* **Audience country** `creators_audience_country`: (Optional) Filter creators by their audience's primary country. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creators_audience_country.json)
-* **Followers** `creators_followers`: (Optional) Filter creators by their number of followers.
-* **Sort by** `creators_sort_by`: (Required) Select the metric for sorting the creators. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creators_sort_by.json)
-* **Search** `creators_search`: (Optional) Search by creator
-* **Limit** `creators_limit`: (Required) Specify the maximum number of creators to retrieve.
+* **Keyword** `kvideos_keyword`: (Required) Get related videos by keyword.
+* **Region** `kvideos_region`: (Optional) Filter results by one or more geographical regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_region.json)
+* **Industry** `kvideos_industry`: (Optional) Filter keywords by one or more industries. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_industry.json)
+* **Objective** `kvideos_objective`: (Optional) Filter keywords by their campaign marketing objective. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_objective.json)
+* **Period** `kvideos_period`: (Optional) Filter keywords by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
+* **Include related videos limit** `kvideos_limit`: (Required) Specify the maximum number of related videos to retrieve.
+
+---
+
+### ⚙️ Trending Hashtags Settings
+
+These settings are only used when the `Target` is set to `Trending Hashtags`.
+
+* **Country** `hashtags_country`: (Required) Select the country to view its hashtags. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_country.json)
+* **Industry** `hashtags_industry`: (Optional) Filter hashtags by industry. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_industry.json)
+* **Period** `hashtags_period`: (Required) Define the time frame for the trending hashtags data.
+* **New to top 100** `hashtags_new_to_top_100`: (Optional) Show only hashtags that have recently entered the top 100 chart.
+* **Search** `hashtags_search`: (Optional) Search by hashtag.
+* **Include details** `hashtags_include_details`: (Optional) If enabled, fetches additional data from each hashtag's detail page.
+* **Details period** `hashtags_details_period`: (Required when `Include details` is enabled) Define the time frame for the trending hashtag details data.
+* **Limit** `hashtags_limit`: (Optional) Specify the maximum number of hashtags to retrieve.
 
 ---
 
@@ -114,18 +138,27 @@ These settings are only used when the `Target` is set to `Trending Songs (Breako
 
 ---
 
-### ⚙️ Trending Hashtags Settings
+### ⚙️ Trending Creators Settings
 
-These settings are only used when the `Target` is set to `Trending Hashtags`.
+These settings are only used when the `Target` is set to `Trending Creators`.
 
-* **Country** `hashtags_country`: (Required) Select the country to view its hashtags. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_country.json)
-* **Industry** `hashtags_industry`: (Optional) Filter hashtags by industry. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_industry.json)
-* **Period** `hashtags_period`: (Required) Define the time frame for the trending hashtags data.
-* **New to top 100** `hashtags_new_to_top_100`: (Optional) Show only hashtags that have recently entered the top 100 chart.
-* **Search** `hashtags_search`: (Optional) Search by hashtag.
-* **Include details** `hashtags_include_details`: (Optional) If enabled, fetches additional data from each hashtag's detail page.
-* **Details period** `hashtags_details_period`: (Required when `Include details` is enabled) Define the time frame for the trending hashtag details data.
-* **Limit** `hashtags_limit`: (Optional) Specify the maximum number of hashtags to retrieve.
+* **Creators country** `creators_country`: (Required) Select the geographical country of the creators. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creators_country.json)
+* **Audience country** `creators_audience_country`: (Optional) Filter creators by their audience's primary country. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creators_audience_country.json)
+* **Followers** `creators_followers`: (Optional) Filter creators by their number of followers.
+* **Sort by** `creators_sort_by`: (Required) Select the metric for sorting the creators. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creators_sort_by.json)
+* **Search** `creators_search`: (Optional) Search by creator
+* **Limit** `creators_limit`: (Required) Specify the maximum number of creators to retrieve.
+
+---
+
+### ⚙️ Trending Videos Settings
+
+These settings are only used when the `Target` is set to `Trending Videos`.
+
+* **Country** `videos_country`: (Required) Select the geographical country for trending videos. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/videos_country.json)
+* **Period** `videos_period`: (Required) Define the time frame for the trending videos data. [Options](https://github.com/lofe-w/tiktok-creative-center-scraper-public/blob/main/options/videos_period.json)
+* **Sort by** `videos_order_by`: (Required) Select the metric for sorting the trending videos. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/videos_order_by.json)
+* **Limit** `videos_limit`: (Required) Specify the maximum number of videos to retrieve.
 
 ---
 
@@ -139,9 +172,9 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ### 📊 Top Ads (Dashboard & Spotlight)
 
-- List-only: When `Include details` is disabled and `Include keyframe metrics` is not selected. One `List Event`(\$0.1) is consumed for every 20 results retrieved.
+- List-only: When `Include details` is disabled and `Include keyframe metrics` is not selected. For `Top Ads Dashboard`: One `List Event`(\$0.1) is consumed for every 20 results retrieved; For `Top Ads Spotlight`: One `List Event`(\$0.1) is consumed for every 50 results retrieved.
 
-  Example: Scraping 21 results without details and keyframes will consume 2 `List Event`(\$0.1).
+  Example: Scraping 52 results without details and keyframes will consume 3 `List Event`(\$0.1), for `Top Ads Spotlight` is 2.
 
     ```json
     [
@@ -265,23 +298,34 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Trending Videos
+### 📊 Keyword Insights
 
-- One `List Event`(\$0.1) is consumed for every 20 results retrieved.
+- One `List Event`(\$0.1) is consumed for every 50 results retrieved.
 
-  Example: Scraping 21 results will consume 2 `List Event`(\$0.1).
+  Example: Scraping 51 results will consume 2 `List Event`(\$0.1).
 
     ```json
     [
         {
-            "country_code": "US",
-            "cover": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068c799-us/og8yzpBAHECQneA3ffMskRQ0cIbq3SjO0XUItk~tplv-noop.image?t=9276707c\u0026x-expires=1758975640\u0026x-signature=1yuyCigEelUv9uPnDsHb9z8Aldc%3D",
-            "duration": 48,
-            "id": "7546244699665812750",
-            "item_id": "7546244699665812750",
-            "item_url": "https://www.tiktok.com/@mnm_pipi/video/7546244699665812750",
-            "region": "United States",
-            "title": "#Peacockpartner The NFL's best games are on Sunday Night Football! Here are four predictions about who will shine the brightest in primetime in 2025. Catch all the SNF action streaming on Peacock to see if these picks come true! #nfl #nflpicks #nfl2025 #paperfootballguy "
+            "comment": 1528,
+            "cost": 193000,
+            "cpa": 12.5,
+            "ctr": 1.36,
+            "cvr": 9.85,
+            "impression": 25000000,
+            "keyword": "free shipping",
+            "like": 70178,
+            "play_six_rate": 8.41,
+            "post": 8190,
+            "post_change": 78.34,
+            "share": 1588,
+            "video_list": [
+                "7528525829135944974",
+                "7548765955007024392",
+                "7545920550527405367",
+                "7514835735384608046",
+                "7507661938252369198"
+            ]
         },
         ... /* Other results */
     ]
@@ -289,43 +333,185 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Trending Creators
+### 📊 Keyword Insights (Related videos)
 
-- One `List Event`(\$0.1) is consumed for every 20 results retrieved.
+- One `List Event`(\$0.1) is consumed per actor.
 
-  Example: Scraping 21 results will consume 2 `List Event`(\$0.1).
+    ```json
+    [
+        "7528525829135944974",
+        "7548765955007024392",
+        ... /* omit */
+        "7545920550527405367"
+    ]
+    ```
+
+---
+
+### 📊 Trending Hashtags
+
+- List-only: When `Include details` is disabled. One `List Event`(\$0.1) is consumed for every 60 results retrieved.
+
+  Example: Scraping 65 results without details will consume 2 `List Event`(\$0.1).
 
     ```json
     [
         {
-            "tcm_id": "7414477993612935173",
-            "user_id": "62133858422239232",
-            "nick_name": "Fernanda",
-            "avatar_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/200b649d30f76f1238d771f4aff51ee1~tplv-tiktokx-cropcenter:100:100.png?dr=14579\u0026refresh_token=86148874\u0026x-expires=1759125600\u0026x-signature=lff4lmv3BlQCJooKb7%2BkXdszfyk%3D\u0026t=4d5b0474\u0026ps=13740610\u0026shp=a5d48078\u0026shcp=317596d8\u0026idc=sg1",
-            "country_code": "US",
-            "follower_cnt": 9135515,
-            "liked_cnt": 668294555,
-            "tt_link": "https://www.tiktok.com/@ferchugimenez",
-            "tcm_link": "https://creatormarketplace.tiktok.com/ad#/author/7414477993612935173",
-            "items": [
+            "hashtag_id": "405389",
+            "hashtag_name": "golive",
+            "country_info": {
+                "id": "QA",
+                "value": "Qatar",
+                "label": "QA"
+            },
+            "is_promoted": false,
+            "trend": [
                 {
-                    "item_id": "7444674312784645432",
-                    "cover_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/oQIBhn2EeBMUWQR5wVQACFEBtlDxgUDdAfoB8J~tplv-noop.image?t=9276707c\u0026x-expires=1758975932\u0026x-signature=CZie51aNoVsZjKdbTQ9KGoafBnI%3D",
-                    "tt_link": "https://www.tiktok.com/@author/video/7444674312784645432",
-                    "vv": 13733332,
-                    "liked_cnt": 516217,
-                    "create_time": 1733348322
+                    "time": 1758326400,
+                    "value": 0.47
+                },
+                {
+                    "time": 1758412800,
+                    "value": 0.44
                 },
                 ... /* omit */
                 {
-                    "item_id": "7095849716054789381",
-                    "cover_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/e43ff589d5244725b89cb58dbebf0b00~tplv-noop.image?t=9276707c\u0026x-expires=1758975916\u0026x-signature=BroLgq4VFjuEMh%2BCp2rgN7XZSng%3D",
-                    "tt_link": "https://www.tiktok.com/@author/video/7095849716054789381",
-                    "vv": 10422320,
-                    "liked_cnt": 1547779,
-                    "create_time": 1652131259
+                    "time": 1758844800,
+                    "value": 1
                 }
-            ]
+            ],
+            "creators": [
+                {
+                    "nick_name": "❤️samjhana❤️💕",
+                    "avatar_url": "https://p19-common-sign-useastred.tiktokcdn-eu.com/tos-useast2a-avt-0068-giso/9a1b04464fa32c9f15ae73e1c4fc0973~tplv-tiktokx-cropcenter:100:100.png?dr=14579\u0026refresh_token=65ffb1a7\u0026x-expires=1759125600\u0026x-signature=G3Ndla%2FNrfC4nPp%2F34so84fkfqQ%3D\u0026t=4d5b0474\u0026ps=13740610\u0026shp=a5d48078\u0026shcp=317596d8\u0026idc=my"
+                }
+            ],
+            "publish_cnt": 2032,
+            "video_views": 7939394,
+            "rank": 1,
+            "rank_diff": 1,
+            "rank_diff_type": 1
+        },
+        ... /* Other results */
+    ]
+    ```
+- With-details: When `Include details` is enabled, an extra `details` object is added to each result. This consumes one `Details Event`(\$0.1) per result.
+
+  Example: Scraping 25 results with details will consume 2 `List Event`(\$0.1) & 2 `Details Event`(\$0.1).
+
+    ```json
+    [
+        {
+            ..., /* List-only Output */
+            "details": {
+                "info": {
+                    "hashtag_id": "405389",
+                    "hashtag_name": "golive",
+                    "video_url": "https://www.tiktok.com/tag/golive",
+                    "country_info": {
+                        "id": "ALL",
+                        "value": "ALL",
+                        "label": "ALL"
+                    },
+                    "is_promoted": false,
+                    "trend": [
+                        {
+                            "time": 1758326400,
+                            "value": 0.62
+                        },
+                        {
+                            "time": 1758412800,
+                            "value": 0.66
+                        },
+                        ... /* omit */
+                        {
+                            "time": 1758844800,
+                            "value": 0.99
+                        }
+                    ],
+                    "publish_cnt": 120437,
+                    "video_views": 887726837,
+                    "publish_cnt_all": 542863,
+                    "video_views_all": 4738608858,
+                    "longevity": {
+                        "popular_days": 0,
+                        "current_popularity": 0
+                    },
+                    "audience_ages": [
+                        {
+                            "age_level": 4,
+                            "score": 53
+                        },
+                        ... /* omit */
+                        {
+                            "age_level": 3,
+                            "score": 22
+                        }
+                    ],
+                    "audience_interests": [
+                        {
+                            "interest_info": {
+                                "id": "10008",
+                                "label": "diversify_10008",
+                                "value": "Professional Special Effects"
+                            },
+                            "score": 327
+                        },
+                        ... /* omit */
+                        {
+                            "interest_info": {
+                                "id": "10093",
+                                "label": "diversify_10093",
+                                "value": "Business \u0026 Finance"
+                            },
+                            "score": 169
+                        }
+                    ],
+                    "audience_countries": [
+                        {
+                            "country_info": {
+                                "id": "272103",
+                                "label": "LB",
+                                "value": "Lebanon"
+                            },
+                            "score": 2167
+                        },
+                        ... /* omit */
+                        {
+                            "country_info": {
+                                "id": "798549",
+                                "label": "RO",
+                                "value": "Romania"
+                            },
+                            "score": 153
+                        }
+                    ],
+                    "related_hashtags": [
+                        {
+                            "hashtag_id": "6417",
+                            "hashtag_name": "live",
+                            "video_url": "https://www.tiktok.com/tag/live"
+                        },
+                        ... /* omit */
+                        {
+                            "hashtag_id": "80007445",
+                            "hashtag_name": "straykids",
+                            "video_url": "https://www.tiktok.com/tag/straykids"
+                        }
+                    ],
+                    "related_items": [
+                        {
+                            "item_id": 7549128372564069650,
+                            "cover_uri": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/owKCCniwOEBFD8AAIn6gfIiUoDI8VBEBUmAf5B~tplv-noop.image?t=9276707c\u0026x-expires=1758977488\u0026x-signature=79aEVaQD%2BCkTCDuXpE%2FhUENIbCI%3D"
+                        },
+                        ... /* omit */
+                        {
+                            "item_id": 7551813247855267080,
+                            "cover_uri": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/oQDeSnDkEFA2IvBztCEURbEuBwWxfRnNoPiLgb~tplv-noop.image?t=9276707c\u0026x-expires=1758977498\u0026x-signature=nnBVrNhK%2FhoyT4HjFKxKSdAFhyg%3D"
+                        }
+                    ]
+                }
+            }
         },
         ... /* Other results */
     ]
@@ -505,170 +691,67 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Trending Hashtags
+### 📊 Trending Creators
 
-- List-only: When `Include details` is disabled. One `List Event`(\$0.1) is consumed for every 20 results retrieved.
+- One `List Event`(\$0.1) is consumed for every 50 results retrieved.
 
-  Example: Scraping 21 results without details will consume 2 `List Event`(\$0.1).
+  Example: Scraping 52 results will consume 2 `List Event`(\$0.1).
 
     ```json
     [
         {
-            "hashtag_id": "405389",
-            "hashtag_name": "golive",
-            "country_info": {
-                "id": "QA",
-                "value": "Qatar",
-                "label": "QA"
-            },
-            "is_promoted": false,
-            "trend": [
+            "tcm_id": "7414477993612935173",
+            "user_id": "62133858422239232",
+            "nick_name": "Fernanda",
+            "avatar_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/200b649d30f76f1238d771f4aff51ee1~tplv-tiktokx-cropcenter:100:100.png?dr=14579\u0026refresh_token=86148874\u0026x-expires=1759125600\u0026x-signature=lff4lmv3BlQCJooKb7%2BkXdszfyk%3D\u0026t=4d5b0474\u0026ps=13740610\u0026shp=a5d48078\u0026shcp=317596d8\u0026idc=sg1",
+            "country_code": "US",
+            "follower_cnt": 9135515,
+            "liked_cnt": 668294555,
+            "tt_link": "https://www.tiktok.com/@ferchugimenez",
+            "tcm_link": "https://creatormarketplace.tiktok.com/ad#/author/7414477993612935173",
+            "items": [
                 {
-                    "time": 1758326400,
-                    "value": 0.47
-                },
-                {
-                    "time": 1758412800,
-                    "value": 0.44
+                    "item_id": "7444674312784645432",
+                    "cover_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/oQIBhn2EeBMUWQR5wVQACFEBtlDxgUDdAfoB8J~tplv-noop.image?t=9276707c\u0026x-expires=1758975932\u0026x-signature=CZie51aNoVsZjKdbTQ9KGoafBnI%3D",
+                    "tt_link": "https://www.tiktok.com/@author/video/7444674312784645432",
+                    "vv": 13733332,
+                    "liked_cnt": 516217,
+                    "create_time": 1733348322
                 },
                 ... /* omit */
                 {
-                    "time": 1758844800,
-                    "value": 1
+                    "item_id": "7095849716054789381",
+                    "cover_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/e43ff589d5244725b89cb58dbebf0b00~tplv-noop.image?t=9276707c\u0026x-expires=1758975916\u0026x-signature=BroLgq4VFjuEMh%2BCp2rgN7XZSng%3D",
+                    "tt_link": "https://www.tiktok.com/@author/video/7095849716054789381",
+                    "vv": 10422320,
+                    "liked_cnt": 1547779,
+                    "create_time": 1652131259
                 }
-            ],
-            "creators": [
-                {
-                    "nick_name": "❤️samjhana❤️💕",
-                    "avatar_url": "https://p19-common-sign-useastred.tiktokcdn-eu.com/tos-useast2a-avt-0068-giso/9a1b04464fa32c9f15ae73e1c4fc0973~tplv-tiktokx-cropcenter:100:100.png?dr=14579\u0026refresh_token=65ffb1a7\u0026x-expires=1759125600\u0026x-signature=G3Ndla%2FNrfC4nPp%2F34so84fkfqQ%3D\u0026t=4d5b0474\u0026ps=13740610\u0026shp=a5d48078\u0026shcp=317596d8\u0026idc=my"
-                }
-            ],
-            "publish_cnt": 2032,
-            "video_views": 7939394,
-            "rank": 1,
-            "rank_diff": 1,
-            "rank_diff_type": 1
+            ]
         },
         ... /* Other results */
     ]
     ```
-- With-details: When `Include details` is enabled, an extra `details` object is added to each result. This consumes one `Details Event`(\$0.1) per result.
 
-  Example: Scraping 25 results with details will consume 2 `List Event`(\$0.1) & 2 `Details Event`(\$0.1).
+---
+
+### 📊 Trending Videos
+
+- One `List Event`(\$0.1) is consumed for every 20 results retrieved.
+
+  Example: Scraping 21 results will consume 2 `List Event`(\$0.1).
 
     ```json
     [
         {
-            ..., /* List-only Output */
-            "details": {
-                "info": {
-                    "hashtag_id": "405389",
-                    "hashtag_name": "golive",
-                    "video_url": "https://www.tiktok.com/tag/golive",
-                    "country_info": {
-                        "id": "ALL",
-                        "value": "ALL",
-                        "label": "ALL"
-                    },
-                    "is_promoted": false,
-                    "trend": [
-                        {
-                            "time": 1758326400,
-                            "value": 0.62
-                        },
-                        {
-                            "time": 1758412800,
-                            "value": 0.66
-                        },
-                        ... /* omit */
-                        {
-                            "time": 1758844800,
-                            "value": 0.99
-                        }
-                    ],
-                    "publish_cnt": 120437,
-                    "video_views": 887726837,
-                    "publish_cnt_all": 542863,
-                    "video_views_all": 4738608858,
-                    "longevity": {
-                        "popular_days": 0,
-                        "current_popularity": 0
-                    },
-                    "audience_ages": [
-                        {
-                            "age_level": 4,
-                            "score": 53
-                        },
-                        ... /* omit */
-                        {
-                            "age_level": 3,
-                            "score": 22
-                        }
-                    ],
-                    "audience_interests": [
-                        {
-                            "interest_info": {
-                                "id": "10008",
-                                "label": "diversify_10008",
-                                "value": "Professional Special Effects"
-                            },
-                            "score": 327
-                        },
-                        ... /* omit */
-                        {
-                            "interest_info": {
-                                "id": "10093",
-                                "label": "diversify_10093",
-                                "value": "Business \u0026 Finance"
-                            },
-                            "score": 169
-                        }
-                    ],
-                    "audience_countries": [
-                        {
-                            "country_info": {
-                                "id": "272103",
-                                "label": "LB",
-                                "value": "Lebanon"
-                            },
-                            "score": 2167
-                        },
-                        ... /* omit */
-                        {
-                            "country_info": {
-                                "id": "798549",
-                                "label": "RO",
-                                "value": "Romania"
-                            },
-                            "score": 153
-                        }
-                    ],
-                    "related_hashtags": [
-                        {
-                            "hashtag_id": "6417",
-                            "hashtag_name": "live",
-                            "video_url": "https://www.tiktok.com/tag/live"
-                        },
-                        ... /* omit */
-                        {
-                            "hashtag_id": "80007445",
-                            "hashtag_name": "straykids",
-                            "video_url": "https://www.tiktok.com/tag/straykids"
-                        }
-                    ],
-                    "related_items": [
-                        {
-                            "item_id": 7549128372564069650,
-                            "cover_uri": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/owKCCniwOEBFD8AAIn6gfIiUoDI8VBEBUmAf5B~tplv-noop.image?t=9276707c\u0026x-expires=1758977488\u0026x-signature=79aEVaQD%2BCkTCDuXpE%2FhUENIbCI%3D"
-                        },
-                        ... /* omit */
-                        {
-                            "item_id": 7551813247855267080,
-                            "cover_uri": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/oQDeSnDkEFA2IvBztCEURbEuBwWxfRnNoPiLgb~tplv-noop.image?t=9276707c\u0026x-expires=1758977498\u0026x-signature=nnBVrNhK%2FhoyT4HjFKxKSdAFhyg%3D"
-                        }
-                    ]
-                }
-            }
+            "country_code": "US",
+            "cover": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068c799-us/og8yzpBAHECQneA3ffMskRQ0cIbq3SjO0XUItk~tplv-noop.image?t=9276707c\u0026x-expires=1758975640\u0026x-signature=1yuyCigEelUv9uPnDsHb9z8Aldc%3D",
+            "duration": 48,
+            "id": "7546244699665812750",
+            "item_id": "7546244699665812750",
+            "item_url": "https://www.tiktok.com/@mnm_pipi/video/7546244699665812750",
+            "region": "United States",
+            "title": "#Peacockpartner The NFL's best games are on Sunday Night Football! Here are four predictions about who will shine the brightest in primetime in 2025. Catch all the SNF action streaming on Peacock to see if these picks come true! #nfl #nflpicks #nfl2025 #paperfootballguy "
         },
         ... /* Other results */
     ]
@@ -680,12 +763,29 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 Pricing model: [Pay per event](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event)
 
-| Event                                                | Description                                                                                                                      | Price    | Result           |
-|------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|----------|------------------|
-| Actor Start                                          | Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).   | \$0.0001 | -                |
-| List Event(per 20 results)                           | One list event is consumed for every 20 results retrieved.                                                                       | \$0.1    | \$0.1/20 results |
-| Details Event(per 20 results)                        | One details event is consumed for every 20 results retrieved, when `Include details` is enabled.                                 | \$0.1    | \$0.1/20 results |
-| Keyframes Event(per 20 results, per keyframe option) | One keyframes event is consumed per keyframe option for every 20 results retrieved, when `Include keyframe metrics` is selected. | \$0.1    | \$0.1/20 results |
+| Event                                                    | Description                                                                                                                    | Price    | Unit           |
+|----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|----------|----------------|
+| Actor Start                                              | Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event). | \$0.0001 | \$0.0001/actor |
+| List Event(per page)                                     | One list event is consumed for every page retrieved.                                                                           | \$0.1    | \$0.1/page     |
+| Details Event(per page)                                  | One details event is consumed for every page retrieved, when `Include details` is enabled.                                     | \$0.1    | \$0.1/page     |
+| Keyframes Event(per page, per keyframe option)           | One keyframes event is consumed per keyframe option for every page retrieved, when `Include keyframe metrics` is selected.     | \$0.1    | \$0.1/page     |
+
+For target:
+
+| Target                                         | Page size | Price                |
+|------------------------------------------------|-----------|----------------------|
+| Top Ads Dashboard                              | 20        | ~ \$5/1000 results   |
+| Top Ads Spotlight                              | 50        | ~ \$2/1000 results   |
+| Keyword Insights                               | 50        | ~ \$2/1000 results   |
+| Keyword Insights (Related videos)              | 50        | ~ \$2/1000 results   |
+| Keyword Insights (Keyword examples)            |           |                      |
+| Keyword Insights (Related Keywords & Hashtags) |           |                      |
+| Trending Hashtags                              | 60        | ~ \$1.7/1000 results |
+| Trending Songs (Popular)                       | 20        | ~ \$5/1000 results   |
+| Trending Songs (Breakout)                      | 20        | ~ \$5/1000 results   |
+| Trending Creators                              | 50        | ~ \$2/1000 results   |
+| Trending Videos                                | 20        | ~ \$5/1000 results   |
+
 
 ## 📞 Support
 
