@@ -91,8 +91,23 @@ These settings are only used when the `Target` is set to `Keyword Insights (Rela
 * **Region** `kvideos_region`: (Optional) Filter results by one or more geographical regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_region.json)
 * **Industry** `kvideos_industry`: (Optional) Filter keywords by one or more industries. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_industry.json)
 * **Objective** `kvideos_objective`: (Optional) Filter keywords by their campaign marketing objective. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_objective.json)
-* **Period** `kvideos_period`: (Optional) Filter keywords by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
+* **Period** `kvideos_period`: (Required) Filter keywords by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
 * **Include related videos limit** `kvideos_limit`: (Required) Specify the maximum number of related videos to retrieve.
+
+---
+
+### ⚙️ Keyword Insights (Keyword examples) Settings
+
+These settings are only used when the `Target` is set to `Keyword Insights (Keyword examples)`.
+
+* **Keyword** `kexamples_keyword`: (Required) Get examples by keyword.
+* **Region** `kexamples_region`: (Optional) Filter results by one or more geographical regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_region.json)
+* **Industry** `kexamples_industry`: (Optional) Filter keyword examples by one or more industries. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_industry.json)
+* **Objective** `kexamples_objective`: (Optional) Filter keyword examples by their campaign marketing objective. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_objective.json)
+* **Period** `kexamples_period`: (Required) Filter keyword examples by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
+* **Order by** `kexamples_order_by`: (Required) Select the metric for sorting the keyword examples results.
+* **Order type** `kexamples_order_type`: (Required) Select the sorting type for the keyword examples.
+* **Limit** `kexamples_limit`: (Required) Specify the maximum number of keyword examples to retrieve.
 
 ---
 
@@ -172,9 +187,9 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ### 📊 Top Ads (Dashboard & Spotlight)
 
-- List-only: When `Include details` is disabled and `Include keyframe metrics` is not selected. For `Top Ads Dashboard`: One `List Event`(\$0.1) is consumed for every 20 results retrieved; For `Top Ads Spotlight`: One `List Event`(\$0.1) is consumed for every 50 results retrieved.
+`Top Ads Dashboard`'s page size is **20**; `Top Ads Spotlight`'s page size is **50**.
 
-  Example: Scraping 52 results without details and keyframes will consume 3 `List Event`(\$0.1), for `Top Ads Spotlight` is 2.
+- List-only: When `Include details` is disabled and `Include keyframe metrics` is not selected. One `List Event`(\$0.1) is consumed for every page results retrieved.
 
     ```json
     [
@@ -204,9 +219,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
     ]
     ```
 
-- With-details: When `Include details` is enabled, an extra `details` object is added to each result. This consumes one `Details Event`(\$0.1) per result.
-
-  Example: Scraping 25 results with details will consume 2 `List Event`(\$0.1) & 2 `Details Event`(\$0.1).
+- With-details: When `Include details` is enabled, an extra `details` object is added to each result. This consumes extra one `Details Event`(\$0.1) per page result.
 
     ```json
     [
@@ -256,10 +269,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
     ]
     ```
 
-- With-keyframes: When `Include keyframe metrics` is selected, an extra `keyframe_*` object is added to each metric selected, per result. This consumes one `Keyframes Event`(\$0.1) per keyframe option.
-
-  Example: If you scrape 10 results and select 3 keyframe metrics (CTR, CVR, Clicks), it will consume 1
-  `List Event`(\$0.1) & 3 `Keyframes Event`(\$0.1).
+- With-keyframes: When `Include keyframe metrics` is selected, has extra `keyframe_*` object is added per keyframe option, per page results. This consumes extra one `Keyframes Event`(\$0.1) per keyframe option, per page results.
 
     - `CTR` selected → extra `keyframe_retain_ctr` object
     - `CVR` selected → extra `keyframe_retain_cvr` object
@@ -267,7 +277,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
     - `Conversion` selected → extra `keyframe_convert_cnt` object
     - `Remain` selected → extra `keyframe_play_retain_cnt` object
 
-  The structures they output are consistent
+    The structures they output are consistent
     ```json
     [
         {
@@ -300,9 +310,9 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ### 📊 Keyword Insights
 
-- One `List Event`(\$0.1) is consumed for every 50 results retrieved.
+`Keyword Insights`'s page size is **50**.
 
-  Example: Scraping 51 results will consume 2 `List Event`(\$0.1).
+- One `List Event`(\$0.1) is consumed per page results retrieved.
 
     ```json
     [
@@ -348,11 +358,34 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
+### 📊 Keyword Insights (Keyword examples)
+
+`Keyword Insights (Keyword examples)`'s page size is **50**.
+
+- One `List Event`(\$0.1) is consumed per page results retrieved.
+
+    ```json
+    [
+        {
+            "covers": [
+                "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068c799-us/oAwsgWFjOAzgLeGQ0QfL8M2ABzqMAWnHfIc9fR~tplv-noop.image?t=9276707c\u0026x-expires=1759075386\u0026x-signature=m%2Bd6wWu05uyxGFU9yS4tN6Bn9lU%3D"
+            ],
+            "ctr": 73.33,
+            "cvr": 57.5,
+            "sentence": "Lemme Play Gummies Free Shipping Must buy Women’s products Women 30+ Women 40+ Trending products #tiktokshoprestock #lemme #women #supplements #gummies @lemme",
+            "use_type": "script_use_type_title"
+        },
+        ... /* Other results */
+    ]
+    ```
+
+---
+
 ### 📊 Trending Hashtags
 
-- List-only: When `Include details` is disabled. One `List Event`(\$0.1) is consumed for every 60 results retrieved.
+`Trending Hashtags`'s page size is **50**.
 
-  Example: Scraping 65 results without details will consume 2 `List Event`(\$0.1).
+- List-only: When `Include details` is disabled. One `List Event`(\$0.1) is consumed per page results retrieved.
 
     ```json
     [
@@ -395,9 +428,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
         ... /* Other results */
     ]
     ```
-- With-details: When `Include details` is enabled, an extra `details` object is added to each result. This consumes one `Details Event`(\$0.1) per result.
-
-  Example: Scraping 25 results with details will consume 2 `List Event`(\$0.1) & 2 `Details Event`(\$0.1).
+- With-details: When `Include details` is enabled, an extra `details` object is added to each result. This consumes extra one `Details Event`(\$0.1) per page results.
 
     ```json
     [
@@ -521,9 +552,9 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ### 📊 Trending Songs (Popular & Breakout)
 
-- List-only: When `Include details` is disabled. One `List Event`(\$0.1) is consumed for every 20 results retrieved.
+`Trending Songs (Popular)`'s page size is **20**; `Trending Songs (Breakout)`'s page size is **20**.
 
-  Example: Scraping 21 results without details will consume 2 `List Event`(\$0.1).
+- List-only: When `Include details` is disabled. One `List Event`(\$0.1) is consumed per page results retrieved.
 
     ```json
     [
@@ -574,9 +605,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
         ... /* Other results */
     ]
     ```
-- With-details: When `Include details` is enabled, an extra `details` object is added to each result. This consumes one `List Event`(\$0.1) per result.
-
-  Example: Scraping 25 results with details will consume 2 `List Event`(\$0.1) & 2 `Details Event`(\$0.1).
+- With-details: When `Include details` is enabled, an extra `details` object is added to each result. This consumes extra one `List Event`(\$0.1) per page results.
 
     ```json
     [
@@ -693,9 +722,9 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ### 📊 Trending Creators
 
-- One `List Event`(\$0.1) is consumed for every 50 results retrieved.
+`Trending Creators`'s page size is **50**.
 
-  Example: Scraping 52 results will consume 2 `List Event`(\$0.1).
+- One `List Event`(\$0.1) is consumed per page results retrieved.
 
     ```json
     [
@@ -737,9 +766,9 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ### 📊 Trending Videos
 
-- One `List Event`(\$0.1) is consumed for every 20 results retrieved.
+`Trending Videos`'s page size is **20**.
 
-  Example: Scraping 21 results will consume 2 `List Event`(\$0.1).
+- One `List Event`(\$0.1) is consumed per page results retrieved.
 
     ```json
     [
@@ -772,19 +801,19 @@ Pricing model: [Pay per event](https://docs.apify.com/platform/actors/publishing
 
 For target:
 
-| Target                                         | Page size | Price                |
-|------------------------------------------------|-----------|----------------------|
-| Top Ads Dashboard                              | 20        | ~ \$5/1000 results   |
-| Top Ads Spotlight                              | 50        | ~ \$2/1000 results   |
-| Keyword Insights                               | 50        | ~ \$2/1000 results   |
-| Keyword Insights (Related videos)              | 50        | ~ \$2/1000 results   |
-| Keyword Insights (Keyword examples)            |           |                      |
-| Keyword Insights (Related Keywords & Hashtags) |           |                      |
-| Trending Hashtags                              | 60        | ~ \$1.7/1000 results |
-| Trending Songs (Popular)                       | 20        | ~ \$5/1000 results   |
-| Trending Songs (Breakout)                      | 20        | ~ \$5/1000 results   |
-| Trending Creators                              | 50        | ~ \$2/1000 results   |
-| Trending Videos                                | 20        | ~ \$5/1000 results   |
+| Target                                         | Page size |
+|------------------------------------------------|-----------|
+| Top Ads Dashboard                              | 20        |
+| Top Ads Spotlight                              | 50        |
+| Keyword Insights                               | 50        |
+| Keyword Insights (Related videos)              | 50        |
+| Keyword Insights (Keyword examples)            |           |
+| Keyword Insights (Related Keywords & Hashtags) |           |
+| Trending Hashtags                              | 60        |
+| Trending Songs (Popular)                       | 20        |
+| Trending Songs (Breakout)                      | 20        |
+| Trending Creators                              | 50        |
+| Trending Videos                                | 20        |
 
 
 ## 📞 Support
