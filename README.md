@@ -12,6 +12,8 @@ Your ultimate tool for unlocking high-value, real-time data from the TikTok Crea
     * [Top Ads Spotlight)](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)
     * [Ad Analytics](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
     * [Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
+    * [Ad Percentile](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
+    * [Ad Recommend](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
     * [Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)
     * [Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)
     * [Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
@@ -33,11 +35,11 @@ Your ultimate tool for unlocking high-value, real-time data from the TikTok Crea
 
 * **Target** `target`: (Required) Select the data source. Your choice determines which settings below are used.
 
-  One of the `Top Ads Dashboard`, `Top Ads Spotlight`, `Ad Analytics`, `Ad Keyframe`, `Keyword Insights`, `Keyword Insights (Related videos)`, `Keyword Insights (Keyword examples)`, `Keyword Insights (Related Keywords & Hashtags)`, `Trending Hashtags`, `Hashtag Analytics`, `Trending Songs (Popular)`, `Trending Songs (Breakout)`, `Song Analytics`, `Trending Creators`, `Trending Videos`.
+  One of the `Top Ads Dashboard`, `Top Ads Spotlight`, `Ad Analytics`, `Ad Keyframe`, `Ad Percentile`, `Ad Recommend`, `Keyword Insights`, `Keyword Insights (Related videos)`, `Keyword Insights (Keyword examples)`, `Keyword Insights (Related Keywords & Hashtags)`, `Trending Hashtags`, `Hashtag Analytics`, `Trending Songs (Popular)`, `Trending Songs (Breakout)`, `Song Analytics`, `Trending Creators`, `Trending Videos`.
 
 * **Cookies** `cookies`: (Required) Your authentication cookie after logging into the [TikTok Creative Center](https://ads.tiktok.com/business/creativecenter/pc/en) platform. Way to obtain:
 
-![](https://github.com/lofe-w/tiktok-creative-center-scraper-public/raw/main/imgs/get_cookie.png)
+  ![](https://github.com/lofe-w/tiktok-creative-center-scraper-public/raw/main/imgs/get_cookie.png)
 
 ---
 
@@ -77,12 +79,33 @@ These settings are only used when the `Target` is set to `Ad Analytics`.
 
 ---
 
+### ⚙️ Ad Recommend Settings
+
+These settings are only used when the `Target` is set to `Ad Recommend`.
+
+* **Material id** `ad_recommend_material_id`: (Required) Obtain from the result of `Top Ads Dashboard` or `Top Ads Spotlight`.
+* **Industry** `ad_recommend_industry`: (Required) Industry for recommend ads. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_industry.json)
+* **Country** `ad_recommend_country`: (Required) Country for recommend ads. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_region.json)
+
+---
+
+### ⚙️ Ad Percentile Settings
+
+These settings are only used when the `Target` is set to `Ad Percentile`.
+
+* **Material id** `ad_percentile_material_id`: (Required) Obtain from the result of `Top Ads Dashboard` or `Top Ads Spotlight`.
+* **Metric** `ad_percentile_metric`: (Required) Select specific percentile metric to retrieve. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/ad_percentile_metric.json).
+* **Period** `ad_percentile_period`: (Required) Define the time frame for the percentile data.
+
+---
+
 ### ⚙️ Ad Keyframe Settings
 
 These settings are only used when the `Target` is set to `Ad Keyframe`.
 
-* **Material id** `ad_analytics_material_id`: (Required) Obtain from the result of `Top Ads Dashboard` or `Top Ads Spotlight`.
-* **Ad keyframe metric** `ad_keyframe_metric`: (Required) Select specific keyframe metric to retrieve. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/ad_keyframe_metric.json)
+* **Material id** `ad_percentile_material_id`: (Required) Obtain from the result of `Top Ads Dashboard` or `Top Ads Spotlight`.
+* **Metric** `ad_percentile_metric`: (Required) Select specific percentile metric to retrieve. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/ad_percentile_metric.json).
+
 
 ---
 
@@ -358,6 +381,60 @@ The Actor returns a dataset of items. The structure of each item depends on the 
         "duration": 7,
         "highlight": [
             1
+        ]
+    }
+}
+```
+
+---
+
+### 📊 Ad Percentile
+
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "20251021173406B92FD6277A6134645863",
+    "data": {
+        "ctr_percentile": 0.48
+    }
+}
+```
+
+---
+
+### 📊 Ad Recommend
+
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "20251021175158CD9AD6F7297CA639BE2A",
+    "data": {
+        "materials": [
+            {
+                "ad_title": "an iced pumpkin cream chai the size of my body would probably cure me",
+                "brand_name": "Starbucks",
+                "cost": 2,
+                "ctr": 0.37,
+                "favorite": false,
+                "id": "7553372735096815634",
+                "industry_key": "label_23116000000",
+                "is_search": false,
+                "like": 28543,
+                "objective_key": "campaign_objective_reach",
+                "video_info": {
+                    "vid": "v10033g50000d39g46nog65nq59ms5lg",
+                    "duration": 6.434,
+                    "cover": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0051c001-sg/oYANCrNTF0AJBIvuh4vAaAsUziYbViBEdUMG3~tplv-noop.image?t=9276707c&x-expires=1761061924&x-signature=FxWwVJmDyZhiNI0Rmgv%2FE8h8nlY%3D",
+                    "video_url": {
+                        "720p": "https://v16m-default.tiktokcdn.com/f1487176ecbcb22151720c68f8dc586d/68f7ac24/video/tos/alisg/tos-alisg-ve-0051c001-sg/oUAvN3NaACbUGBr0BhIoXA5DuEFUiVjMYWzMi/?a=0&bti=NTU4QDM1NGA%3D&ch=0&cr=0&dr=0&lr=tiktok_business&cd=0%7C0%7C1%7C0&cv=1&br=1976&bt=988&cs=0&ds=3&ft=cApXJCz7ThWHdwFIEGZmo0P&mime_type=video_mp4&qs=0&rc=NWc2NGVkNjk7OzY0OTk2aEBpajhwOHE5cjlqNjMzODYzNEAzNjRfNjAyXzUxMzRgXzY2YSNpcDZuMmRrMTZhLS1kMC1zcw%3D%3D&vvpl=1&l=20251021175158CD9AD6F7297CA639BE2A&btag=e000b0000"
+                    },
+                    "width": 576,
+                    "height": 1024
+                }
+            },
+          ... /* omit */
         ]
     }
 }
@@ -895,6 +972,8 @@ The trigger logic of the event is the number of items that return the result.
 |[Top Ads Spotlight)](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)| 0.002$ / item |
 |[Ad Analytics](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.002$ / time |
 |[Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.002$ / time |
+|[Ad Percentile](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.002$ / time |
+|[Ad Recommend](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.002$ / time |
 |[Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)| 0.002$ / item |
 |[Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)| 0.002$ / time |
 |[Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)| 0.002$ / item |
@@ -906,7 +985,6 @@ The trigger logic of the event is the number of items that return the result.
 |[Song Analytics](https://ads.tiktok.com/business/creativecenter/song/fantasmas-7326640926458743557/pc/en)| 0.002$ / time |
 |[Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)|      0.002$ / item    |
 |[Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)|          0.002$ / item |
-
 
 ## 📞 Support
 
