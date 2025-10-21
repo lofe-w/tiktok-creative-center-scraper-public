@@ -8,19 +8,19 @@ Your ultimate tool for unlocking high-value, real-time data from the TikTok Crea
 
 * **⚡️ Fast & Efficient**: Bypasses slow UI interactions by calling the backend API directly, saving you significant time and platform costs.
 * **🎯 All-in-one Scraping**: A single Actor to rule them all! Scrape multiple pages from the Creative Center, including:
-    * [Top Ads (Dashboard & Spotlight)](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)
-
-      Optional include **details(analytics)** or **keyframe metrics(interactive time analysis)**
+    * [Top Ads Dashboard)](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)
+    * [Top Ads Spotlight)](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)
+    * [Ad Analytics](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
+    * [Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
     * [Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)
     * [Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)
     * [Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
     * [Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
     * [Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)
-
-      Optional include **details(analytics)**
-    * [Trending Songs (Popular & Breakout)](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)
-
-      Optional include **details(analytics)**
+    * [Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)
+    * [Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)
+    * [Trending Songs Breakout](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)
+    * [Song Analytics](https://ads.tiktok.com/business/creativecenter/song/fantasmas-7326640926458743557/pc/en)
     * [Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)
     * [Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)
 
@@ -33,7 +33,11 @@ Your ultimate tool for unlocking high-value, real-time data from the TikTok Crea
 
 * **Target** `target`: (Required) Select the data source. Your choice determines which settings below are used.
 
-  One of the `Top Ads Dashboard`, `Top Ads Spotlight`, `Trending Videos`, `Trending Creators`, `Trending Songs (Popular)`, `Trending Songs (Breakout)`, `Trending Hashtags`.
+  One of the `Top Ads Dashboard`, `Top Ads Spotlight`, `Ad Analytics`, `Ad Keyframe`, `Keyword Insights`, `Keyword Insights (Related videos)`, `Keyword Insights (Keyword examples)`, `Keyword Insights (Related Keywords & Hashtags)`, `Trending Hashtags`, `Hashtag Analytics`, `Trending Songs (Popular)`, `Trending Songs (Breakout)`, `Song Analytics`, `Trending Creators`, `Trending Videos`.
+
+* **Cookies** `cookies`: (Required) Your authentication cookie after logging into the [TikTok Creative Center](https://ads.tiktok.com/business/creativecenter/pc/en) platform. Way to obtain:
+
+![](https://github.com/lofe-w/tiktok-creative-center-scraper-public/raw/main/imgs/get_cookie.png)
 
 ---
 
@@ -50,9 +54,8 @@ These settings are only used when the `Target` is set to `Top Ads Dashboard`.
 * **Ad format** `dashboard_ad_format`: (Optional) Filter by ad format. 'Spark ads' use organic posts; 'Non-Spark ads' are traditional.
 * **Likes** `dashboard_likes`: (Optional) Filter ads by the percentile range of likes received. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_likes.json)
 * **Sort by** `dashboard_sort_by`: (Required) Select the metric for sorting the ad results.
-* **Include details** `dashboard_include_details`: (Optional) If enabled, fetches additional data from each ad's detail page.
-* **Include keyframe metrics** `dashboard_include_keyframe_metrics`: (Optional) Select specific keyframe metrics to retrieve. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_include_keyframe_metrics.json)
-* **Limit** `dashboard_limit`: (Required) Specify the maximum number of ads to retrieve.
+* **Limit** `dashboard_page`: (Required) Page number.
+* **Limit** `dashboard_limit`: (Required) Page size.
 
 ---
 
@@ -61,9 +64,25 @@ These settings are only used when the `Target` is set to `Top Ads Dashboard`.
 These settings are only used when the `Target` is set to `Top Ads Spotlight`.
 
 * **Industry** `spotlight_industry`: (Optional) Filter ads by one or more industries for Spotlight. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/spotlight_industry.json)
-* **Include details** `spotlight_include_details`: (Optional) If enabled, fetches additional data from each ad's detail page.
-* **Include keyframe metrics** `spotlight_include_keyframe_metrics`: (Optional) Select specific keyframe metrics to retrieve. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/spotlight_include_keyframe_metrics.json)
-* **Limit** `spotlight_limit`: (Required) Specify the maximum number of ads to retrieve.
+* **Limit** `spotlight_page`: (Required) Page number.
+* **Limit** `spotlight_limit`: (Required) Page size.
+
+---
+
+### ⚙️ Ad Analytics Settings
+
+These settings are only used when the `Target` is set to `Ad Analytics`.
+
+* **Material id** `ad_analytics_material_id`: (Required) Obtain from the result of `Top Ads Dashboard` or `Top Ads Spotlight`.
+
+---
+
+### ⚙️ Ad Keyframe Settings
+
+These settings are only used when the `Target` is set to `Ad Keyframe`.
+
+* **Material id** `ad_analytics_material_id`: (Required) Obtain from the result of `Top Ads Dashboard` or `Top Ads Spotlight`.
+* **Ad keyframe metric** `ad_keyframe_metric`: (Required) Select specific keyframe metric to retrieve. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/ad_keyframe_metric.json)
 
 ---
 
@@ -79,7 +98,8 @@ These settings are only used when the `Target` is set to `Keyword Insights`.
 * **Period** `keyword_period`: (Required) Filter keywords by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
 * **Order by** `keyword_order_by`: (Required) Select the metric for sorting the keyword results. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_order_by.json)
 * **Order type** `keyword_order_type`: (Required) Select the sorting type for the keyword results.
-* **Limit** `keyword_limit`: (Required) Specify the maximum number of keywords to retrieve.
+* **Limit** `keyword_page`: (Required) Page number.
+* **Limit** `keyword_limit`: (Required) Page size.
 
 ---
 
@@ -92,7 +112,7 @@ These settings are only used when the `Target` is set to `Keyword Insights (Rela
 * **Industry** `kvideos_industry`: (Optional) Filter keywords by one or more industries. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_industry.json)
 * **Objective** `kvideos_objective`: (Optional) Filter keywords by their campaign marketing objective. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_objective.json)
 * **Period** `kvideos_period`: (Required) Filter keywords by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
-* **Include related videos limit** `kvideos_limit`: (Required) Specify the maximum number of related videos to retrieve.
+* **Limit** `kvideos_limit`: (Required) Page size.
 
 ---
 
@@ -107,7 +127,8 @@ These settings are only used when the `Target` is set to `Keyword Insights (Keyw
 * **Period** `kexamples_period`: (Required) Filter keyword examples by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
 * **Order by** `kexamples_order_by`: (Required) Select the metric for sorting the keyword examples results.
 * **Order type** `kexamples_order_type`: (Required) Select the sorting type for the keyword examples.
-* **Limit** `kexamples_limit`: (Required) Specify the maximum number of keyword examples to retrieve.
+* **Limit** `kexamples_page`: (Required) Page number.
+* **Limit** `kexamples_limit`: (Required) Page size.
 
 ---
 
@@ -117,10 +138,11 @@ These settings are only used when the `Target` is set to `Keyword Insights (Rela
 
 * **Keyword** `krelated_keyword`: (Required) Get related keywords or hashtags by keyword.
 * **Type** `krelated_type`: (Required) Get related content by type.
-* **Region** `krelated_region`: (Required) Filter results by one or more geographical regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_region.json)
-* **Industry** `krelated_industry`: (Required) Filter keywords by one or more industries. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_industry.json)
+* **Region** `krelated_region`: (Optional) Filter results by one or more geographical regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_region.json)
+* **Industry** `krelated_industry`: (Optional) Filter keywords by one or more industries. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_industry.json)
 * **Period** `krelated_period`: (Required) Filter keywords by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
-* **limit** `krelated_limit`: (Required) Specify the maximum number of related videos to retrieve.
+* **limit** `krelated_page`: (Required) Page number.
+* **limit** `krelated_limit`: (Required) Page size.
 
 ---
 
@@ -130,12 +152,21 @@ These settings are only used when the `Target` is set to `Trending Hashtags`.
 
 * **Country** `hashtags_country`: (Required) Select the country to view its hashtags. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_country.json)
 * **Industry** `hashtags_industry`: (Optional) Filter hashtags by industry. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_industry.json)
-* **Period** `hashtags_period`: (Required) Define the time frame for the trending hashtags data.
+* **Period** `hashtags_period`: (Required) Define the time frame for the trending hashtags data. Options: "7", "30", "120"
 * **New to top 100** `hashtags_new_to_top_100`: (Optional) Show only hashtags that have recently entered the top 100 chart.
 * **Search** `hashtags_search`: (Optional) Search by hashtag.
-* **Include details** `hashtags_include_details`: (Optional) If enabled, fetches additional data from each hashtag's detail page.
-* **Details period** `hashtags_details_period`: (Required when `Include details` is enabled) Define the time frame for the trending hashtag details data.
-* **Limit** `hashtags_limit`: (Optional) Specify the maximum number of hashtags to retrieve.
+* **Limit** `hashtags_page`: (Required) Page number.
+* **Limit** `hashtags_limit`: (Required) Page size.
+
+---
+
+### ⚙️ Hashtag Analytics Settings
+
+These settings are only used when the `Target` is set to `Hashtag Analytics`.
+
+* **Hashtag name** `hashtag_analytics_hashtag_name`: (Required) Hashtag name. Obtain from the result of `Trending Hashtags`.
+* **Country** `hashtag_analytics_country`: (Required) Select the country to view its analytics data. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_country.json)
+* **Period** `hashtag_analytics_period`: (Required) Define the time frame for the analytics data. Options: "7", "30", "120", "365", "1095"
 
 ---
 
@@ -148,9 +179,8 @@ These settings are only used when the `Target` is set to `Trending Songs (Popula
 * **New to top 100** `popular_new_to_top_100`: (Optional) Show only songs that have recently entered the top 100 chart.
 * **Approved for business use** `popular_approved_for_business_use`: (Optional) Show only songs pre-approved for commercial use.
 * **Search** `popular_search`: (Optional) Search by song or artist.
-* **Include details** `popular_include_details`: (Optional) If enabled, fetches additional data from each song's detail page.
-* **Details period** `popular_details_period`: (Required when `Include details` is enabled) Define the time frame for the trending songs details data.
-* **Limit** `popular_limit`: (Required) Specify the maximum number of songs to retrieve.
+* **Limit** `popular_page`: (Required) Page number.
+* **Limit** `popular_limit`: (Required) Page size.
 
 ---
 
@@ -160,9 +190,18 @@ These settings are only used when the `Target` is set to `Trending Songs (Breako
 
 * **Country** `breakout_country`: (Required) Select the country to view its breakout songs. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/breakout_country.json)
 * **Search** `breakout_search`: (Optional) Search by song or artist.
-* **Include details** `breakout_include_details`: (Optional) If enabled, fetches additional data from each song's detail page.
-* **Details period** `breakout_details_period`: (Required when `Include details` is enabled) Define the time frame for the trending songs details data.
-* **Limit** `breakout_limit`: (Required) Specify the maximum number of songs to retrieve.
+* **Limit** `breakout_page`: (Required) Page number.
+* **Limit** `breakout_limit`: (Required) Page size.
+
+---
+
+### ⚙️ Song Analytics Settings
+
+These settings are only used when the `Target` is set to `Song Analytics`.
+
+* **Clip id** `song_analytics_clip_id`: (Required) Clip id. Obtain from the result of `Trending Songs (Popular)` or `Trending Songs (Breakout)`.
+* **Country** `song_analytics_country`: (Required) Select the country to view its analytics data. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/breakout_country.json)
+* **Period** `song_analytics_period`: (Required) Define the time frame for the analytics data. Options: "7", "30", "120"
 
 ---
 
@@ -174,8 +213,9 @@ These settings are only used when the `Target` is set to `Trending Creators`.
 * **Audience country** `creators_audience_country`: (Optional) Filter creators by their audience's primary country. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creators_audience_country.json)
 * **Followers** `creators_followers`: (Optional) Filter creators by their number of followers.
 * **Sort by** `creators_sort_by`: (Required) Select the metric for sorting the creators. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creators_sort_by.json)
-* **Search** `creators_search`: (Optional) Search by creator
-* **Limit** `creators_limit`: (Required) Specify the maximum number of creators to retrieve.
+* **Search** `creators_search`: (Optional) Search by creator.
+* **Limit** `creators_page`: (Required) Page number.
+* **Limit** `creators_limit`: (Required) Page size.
 
 ---
 
@@ -186,7 +226,8 @@ These settings are only used when the `Target` is set to `Trending Videos`.
 * **Country** `videos_country`: (Required) Select the geographical country for trending videos. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/videos_country.json)
 * **Period** `videos_period`: (Required) Define the time frame for the trending videos data. [Options](https://github.com/lofe-w/tiktok-creative-center-scraper-public/blob/main/options/videos_period.json)
 * **Sort by** `videos_order_by`: (Required) Select the metric for sorting the trending videos. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/videos_order_by.json)
-* **Limit** `videos_limit`: (Required) Specify the maximum number of videos to retrieve.
+* **Limit** `videos_page`: (Required) Page number.
+* **Limit** `videos_limit`: (Required) Page size.
 
 ---
 
@@ -198,624 +239,647 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Top Ads (Dashboard & Spotlight)
+### 📊 Top Ads Dashboard & Top Ads Spotlight
 
-`Top Ads Dashboard`'s page size is **20**; `Top Ads Spotlight`'s page size is **50**.
-
-- List-only: When `Include details` is disabled and `Include keyframe metrics` is not selected. One `List Event`(\$0.1) is consumed for every page results retrieved.
-
-    ```json
-    [
-        {
-            "ad_title": "🗃️ نجاحات حقيقية للأعمال مع +Service  #TikTokserviceplusmena @ramyzeytouni @english.with.adani @feynmaneducation @mahmoud.alsale7",
-            "brand_name": "",
-            "cost": 2,
-            "ctr": 0.85,
-            "favorite": false,
-            "id": "7546175611464876049",
-            "industry_key": "label_24112000000",
-            "is_search": true,
-            "like": 25503,
-            "objective_key": "campaign_objective_video_view",
-            "video_info": {
-                "vid": "v14025g50000d2sk1dnog65hnip00fa0",
-                "duration": 100.502,
-                "cover": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/okmvAitallBAa5ULAaITIVAIAivR2PAlxLYBx~tplv-noop.image?t=9276707c\u0026x-expires=1758966036\u0026x-signature=Iq9G%2FJ0XlwiuXIAZy5j8MvT6jVM%3D",
-                "video_url": {
-                    "720p": "https://v16m-default.tiktokcdn.com/ede0240e34d2900521d9a5e8628a92cc/68d7b114/video/tos/alisg/tos-alisg-pve-0037/o4lVAAtR5YaEU2ti0lCBvnAviaQPALxbEAILI/?a=0\u0026bti=NTU4QDM1NGA%3D\u0026ch=0\u0026cr=0\u0026dr=0\u0026lr=tiktok_business\u0026cd=0%7C0%7C0%7C0\u0026cv=1\u0026br=784\u0026bt=392\u0026cs=0\u0026ds=3\u0026ft=cApXJCz7ThWHanF_EGZmo0P\u0026mime_type=video_mp4\u0026qs=0\u0026rc=ZjVmNjdlNzg0M2U1ZjszO0BpM2kzbGs5cmduNTMzODgzNEAvYzYyYC4tXl4xLjRfYy5gYSNeLW1rMmRrLnBhLS1kLzFzcw%3D%3D\u0026vvpl=1\u0026l=20250927113856B7C57584EB903A89AE99\u0026btag=e00090000"
-                },
-                "width": 576,
-                "height": 1024
-            }
-        },
-        ... /* Other results */
-    ]
-    ```
-
-- With-details: When `Include details` is enabled, an extra `details` object is added to each result. This consumes extra one `Details Event`(\$0.1) per page result.
-
-    ```json
-    [
-        {
-            ..., /* List-only Output */
-            "details": {
-                "ad_title": "🗃️ نجاحات حقيقية للأعمال مع +Service  #TikTokserviceplusmena @ramyzeytouni @english.with.adani @feynmaneducation @mahmoud.alsale7",
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "20251021141421A2ED3905E2130C3F1389",
+    "data": {
+        "materials": [
+            {
+                "ad_title": "※ネタバレ注意！今年も凄すぎる〜🎄✨#サボン #sabon #アドベントカレンダー #クリスマスコフレ #新作コスメ",
                 "brand_name": "",
-                "comment": 127,
-                "cost": 2,
-                "country_code": ["EG", "LB", "BH", "KW", "OM", "MA", "DZ", "SA", "IQ", "QA", "AE"],
-                "ctr": 0.85,
+                "cost": 1,
+                "ctr": 0.93,
                 "favorite": false,
-                "has_summary": false,
-                "highlight_text": "",
-                "id": "7546175611464876049",
-                "industry_key": "label_24112000000",
-                "is_search": false,
-                "keyword_list": null,
-                "landing_page": "",
-                "like": 25503,
-                "objective_key": "campaign_objective_video_view",
-                "objectives": [
-                    {
-                        "label": "campaign_objective_video_view",
-                        "value": 4
-                    }
-                ],
-                "pattern_label": [],
-                "share": 934,
-                "source": "Others",
-                "source_key": 36,
+                "id": "7559593149158670352",
+                "industry_key": "label_14104000000",
+                "is_search": true,
+                "like": 230,
+                "objective_key": "campaign_objective_reach",
                 "video_info": {
-                    "vid": "v14025g50000d2sk1dnog65hnip00fa0",
-                    "duration": 100.502,
-                    "cover": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/okmvAitallBAa5ULAaITIVAIAivR2PAlxLYBx~tplv-noop.image?t=9276707c\u0026x-expires=1758967468\u0026x-signature=bovb3SgFTv21eVclIAE7iDPItIw%3D",
+                    "vid": "v10025g50000d3i797vog65q5f4gnf60",
+                    "duration": 24.219,
+                    "cover": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/owkLvJdBKIKAKoEf6bEC8kB0QmMiiAPjAwOpdc~tplv-noop.image?t=9276707c&x-expires=1761048886&x-signature=A2dpK3MkBMV6K32G767F%2FbBdZPI%3D",
                     "video_url": {
-                        "720p": "https://v16m-default.tiktokcdn.com/fb38370c97f304e350a1153720d1e2ce/68d7b6ac/video/tos/alisg/tos-alisg-pve-0037/o4lVAAtR5YaEU2ti0lCBvnAviaQPALxbEAILI/?a=0\u0026bti=NTU4QDM1NGA%3D\u0026ch=0\u0026cr=0\u0026dr=0\u0026lr=tiktok_business\u0026cd=0%7C0%7C0%7C0\u0026cv=1\u0026br=784\u0026bt=392\u0026cs=0\u0026ds=3\u0026ft=cApXJCz7ThWHLc__EGZmo0P\u0026mime_type=video_mp4\u0026qs=0\u0026rc=ZjVmNjdlNzg0M2U1ZjszO0BpM2kzbGs5cmduNTMzODgzNEAvYzYyYC4tXl4xLjRfYy5gYSNeLW1rMmRrLnBhLS1kLzFzcw%3D%3D\u0026vvpl=1\u0026l=20250927120248AB5325965EDE5A8CAF7F\u0026btag=e00090000"
+                        "720p": "https://v16m-default.tiktokcdn.com/8949959c8a99b0e246d965c3f324134e/68f77936/video/tos/alisg/tos-alisg-pve-0037/o80Ko3tKPAvIjAiK6ALE8ryQFcBkw7f3hpgBiM/?a=0&bti=NTU4QDM1NGA%3D&ch=0&cr=0&dr=0&lr=tiktok_business&cd=0%7C0%7C1%7C0&cv=1&br=3496&bt=1748&cs=0&ds=3&ft=cApXJCz7ThWHdqtIEGZmo0P&mime_type=video_mp4&qs=0&rc=aDM7OjQ8Z2doNjZkPDg4M0BpM2lqaXQ5cjo6NjMzODgzNEBiYzI0MC00Xl4xLTAxYi0yYSMzazEyMmRzNmZhLS1kLy1zcw%3D%3D&vvpl=1&l=20251021141421A2ED3905E2130C3F1389&btag=e000b8000"
                     },
                     "width": 576,
-                    "height": 1024
-                },
-                "voice_over": false
+                    "height": 1020
+                }
+            },
+            ... /* omit */
+        ],
+        "pagination": {
+            "has_more": true,
+            "page": 1,
+            "size": 20,
+            "total_count": 400
+        }
+    }
+}
+```
+---
+
+### 📊 Ad Analytics
+
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "202510211416202976DB5255AD7A58AD76",
+    "data": {
+        "ad_title": "apple is back",
+        "brand_name": "Starbucks",
+        "comment": 1,
+        "cost": 2,
+        "country_code": [
+            "US"
+        ],
+        "ctr": 0.34,
+        "favorite": false,
+        "has_summary": false,
+        "highlight_text": "",
+        "id": "7558904828435202056",
+        "industry_key": "label_23116000000",
+        "is_search": false,
+        "keyword_list": null,
+        "landing_page": "https://starbucks.app.link/r0xeHOZ5VVb?%243p=a_tiktok&%7Ecustomer_placement=tiktok&%7Ecampaign=fy2526q4q1fallsocial&%7Ecreative_name=featuredmenu",
+        "like": 23116,
+        "objective_key": "campaign_objective_reach",
+        "objectives": [
+            {
+                "label": "campaign_objective_reach",
+                "value": 5
             }
+        ],
+        "pattern_label": [],
+        "share": 522,
+        "source": "TikTok Ads Manager",
+        "source_key": 1,
+        "video_info": {
+            "vid": "v10033g50000d3jaamfog65irh5pn29g",
+            "duration": 5.931,
+            "cover": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0051c001-sg/oA05SURcGgfsMNLqAuLFgLbzJCeeRbDQI5ASGz~tplv-noop.image?t=9276707c&x-expires=1761048985&x-signature=tk5EkZNf20ItC9IpWp4fcYe1z90%3D",
+            "video_url": {
+                "720p": "https://v16m-default.tiktokcdn.com/261e8ad48159561ab8ee4768e17f8d7d/68f77999/video/tos/alisg/tos-alisg-ve-0051c001-sg/okqEwcBJWE06i3bKvofAm3sFKyiY51BuAiATjI/?a=0&bti=NTU4QDM1NGA%3D&ch=0&cr=0&dr=0&lr=tiktok_business&cd=0%7C0%7C1%7C0&cv=1&br=1710&bt=855&cs=0&ds=3&ft=cApXJCz7ThWHrItIEGZmo0P&mime_type=video_mp4&qs=0&rc=aTg5MzdpPDRlPDY3NGk1PEBpajVza2w5cnBkNjMzODYzNEBfNl5hMTJgNS8xMi9jYDVhYSM2azJvMmRjXmdhLS1kMC1zcw%3D%3D&vvpl=1&l=202510211416202976DB5255AD7A58AD76&btag=e000b0000"
+            },
+            "width": 576,
+            "height": 1024
         },
-        ... /* Other results */
-    ]
-    ```
+        "voice_over": false
+    }
+}
+```
 
-- With-keyframes: When `Include keyframe metrics` is selected, has extra `keyframe_*` object is added per keyframe option, per page results. This consumes extra one `Keyframes Event`(\$0.1) per keyframe option, per page results.
+---
 
-    - `CTR` selected → extra `keyframe_retain_ctr` object
-    - `CVR` selected → extra `keyframe_retain_cvr` object
-    - `Clicks` selected → extra `keyframe_click_cnt` object
-    - `Conversion` selected → extra `keyframe_convert_cnt` object
-    - `Remain` selected → extra `keyframe_play_retain_cnt` object
+### 📊 Ad Keyframe
 
-    The structures they output are consistent
-    ```json
-    [
-        {
-            ..., /* List-only Output */
-            "keyframe_retain_ctr": {
-                "analysis": [
-                    {
-                        "second": 0,
-                        "value": 0.1
-                    },
-                    {
-                        "second": 1,
-                        "value": 0.8999999999999999
-                    },
-                    ... /* omit */
-                    {
-                        "second": 99,
-                        "value": 0
-                    }
-                ],
-                "duration": 100,
-                "highlight": [2, 5, 10]
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "20251021141815AF6461D583D2AF415D03",
+    "data": {
+        "analysis": [
+            {
+                "second": 0,
+                "value": 0.013720197930724248
+            },
+            ... /* omit */
+            {
+                "second": 6,
+                "value": 0.309604138551507
             }
-        },
-        ... /* Other results */
-    ]
-    ```
+        ],
+        "duration": 7,
+        "highlight": [
+            1
+        ]
+    }
+}
+```
 
 ---
 
 ### 📊 Keyword Insights
 
-`Keyword Insights`'s page size is **50**.
-
-- One `List Event`(\$0.1) is consumed per page results retrieved.
-
-    ```json
-    [
-        {
-            "comment": 1528,
-            "cost": 193000,
-            "cpa": 12.5,
-            "ctr": 1.36,
-            "cvr": 9.85,
-            "impression": 25000000,
-            "keyword": "free shipping",
-            "like": 70178,
-            "play_six_rate": 8.41,
-            "post": 8190,
-            "post_change": 78.34,
-            "share": 1588,
-            "video_list": [
-                "7528525829135944974",
-                "7548765955007024392",
-                "7545920550527405367",
-                "7514835735384608046",
-                "7507661938252369198"
-            ]
-        },
-        ... /* Other results */
-    ]
-    ```
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "20251021141854DA8EA35393F03D4F0888",
+    "data": {
+        "keyword_list": [
+            {
+                "comment": 34739,
+                "cost": 853000,
+                "cpa": 0.05,
+                "ctr": 4.7,
+                "cvr": 100,
+                "impression": 414000000,
+                "keyword": "for free",
+                "like": 1984613,
+                "play_six_rate": 20.94,
+                "post": 104000,
+                "post_change": 129.21,
+                "share": 61573,
+                "video_list": [
+                    "7562494760590658833",
+                    "7517880292862872839",
+                    "7561508660518882578",
+                    "7557041207109618956",
+                    "7525143203834596663"
+                ]
+            },
+            ... /* omit */
+        ],
+        "pagination": {
+            "page": 1,
+            "size": 50,
+            "total": 500,
+            "has_more": true
+        }
+    }
+}
+```
 
 ---
 
 ### 📊 Keyword Insights (Related videos)
 
-- One `List Event`(\$0.1) is consumed per actor.
-
-    ```json
-    [
-        "7528525829135944974",
-        "7548765955007024392",
-        ... /* omit */
-        "7545920550527405367"
-    ]
-    ```
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "20251021142043DBC5326153792F526C43",
+    "data": {
+        "video_list": [
+            "7556199779693514002",
+            "7530445111419850039",
+            ... /* omit */
+        ]
+    }
+}
+```
 
 ---
 
 ### 📊 Keyword Insights (Keyword examples)
 
-`Keyword Insights (Keyword examples)`'s page size is **50**.
-
-- One `List Event`(\$0.1) is consumed per page results retrieved.
-
-    ```json
-    [
-        {
-            "covers": [
-                "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068c799-us/oAwsgWFjOAzgLeGQ0QfL8M2ABzqMAWnHfIc9fR~tplv-noop.image?t=9276707c\u0026x-expires=1759075386\u0026x-signature=m%2Bd6wWu05uyxGFU9yS4tN6Bn9lU%3D"
-            ],
-            "ctr": 73.33,
-            "cvr": 57.5,
-            "sentence": "Lemme Play Gummies Free Shipping Must buy Women’s products Women 30+ Women 40+ Trending products #tiktokshoprestock #lemme #women #supplements #gummies @lemme",
-            "use_type": "script_use_type_title"
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "202510211421080D774D917D50306ACAF3",
+    "data": {
+        "pagination": {
+            "page": 1,
+            "size": 50,
+            "total": 28,
+            "has_more": false
         },
-        ... /* Other results */
-    ]
-    ```
+        "sentence_list": [
+            {
+                "covers": [
+                    "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/5c12d9d97967404c8ed0036bffc6c54f_1709391498~tplv-noop.image?t=9276707c&x-expires=1761049288&x-signature=RFGfoeC%2FpBtgbcRW4tTPo7Mswhs%3D"
+                ],
+                "ctr": 40,
+                "cvr": 0,
+                "sentence": "#trending #xuhuong #2024 #meme #shopping",
+                "use_type": "script_use_type_title"
+            },
+            ... /* omit */
+        ]
+    }
+}
+```
 
 ---
 
 ### 📊 Keyword Insights (Related Keywords & Hashtags)
 
-`Keyword Insights (Related Keywords & Hashtags)`'s page size is **50**.
-
-- One `List Event`(\$0.1) is consumed per page results retrieved.
-
-    ```json
-      [
-          {
-              "name": "freeshipping",
-              "score": 100
-          },
-          ... /* Other results */
-      ]
-    ```
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "2025102114213239B201F33E22C23FCB60",
+    "data": {
+        "list": [
+            {
+                "name": "ชั้นใน",
+                "score": 100
+            },
+            ... /* omit */
+        ]
+    }
+}
+```
 
 ---
 
 ### 📊 Trending Hashtags
 
-`Trending Hashtags`'s page size is **50**.
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "20251021142231C1F07AF59616583266A4",
+    "data": {
+        "list": [
+            {
+                "hashtag_id": "601255",
+                "hashtag_name": "hoco",
+                "country_info": {
+                    "id": "US",
+                    "value": "United States",
+                    "label": "US"
+                },
+                "is_promoted": false,
+                "trend": [
+                    {
+                        "time": 1760400000,
+                        "value": 0.54
+                    },
+                    {
+                        "time": 1760486400,
+                        "value": 0.35
+                    },
+                    {
+                        "time": 1760572800,
+                        "value": 0.28
+                    },
+                    {
+                        "time": 1760659200,
+                        "value": 0.27
+                    },
+                    {
+                        "time": 1760745600,
+                        "value": 0.33
+                    },
+                    {
+                        "time": 1760832000,
+                        "value": 0.7
+                    },
+                    {
+                        "time": 1760918400,
+                        "value": 1
+                    }
+                ],
+                "publish_cnt": 115458,
+                "video_views": 254321646,
+                "rank": 1,
+                "rank_diff_type": 4
+            },
+            ... /* omit */
+        ],
+        "pagination": {
+            "page": 1,
+            "size": 60,
+            "total": 100,
+            "has_more": true
+        }
+    }
+}
+```
 
-- List-only: When `Include details` is disabled. One `List Event`(\$0.1) is consumed per page results retrieved.
+---
 
-    ```json
-    [
-        {
-            "hashtag_id": "405389",
-            "hashtag_name": "golive",
+### 📊 Hashtag Analytics
+
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "20251021142337B6F9483058BE0D3DB6D7",
+    "data": {
+        "info": {
+            "hashtag_id": "601255",
+            "hashtag_name": "hoco",
+            "description": "It's Homecoming season! Show us how you're getting ready for #HoCo.",
+            "video_url": "https://www.tiktok.com/tag/hoco",
             "country_info": {
-                "id": "QA",
-                "value": "Qatar",
-                "label": "QA"
+                "id": "ALL",
+                "value": "ALL",
+                "label": "ALL"
             },
             "is_promoted": false,
             "trend": [
                 {
-                    "time": 1758326400,
-                    "value": 0.47
-                },
-                {
-                    "time": 1758412800,
-                    "value": 0.44
+                    "time": 1760400000,
+                    "value": 0.54
                 },
                 ... /* omit */
                 {
-                    "time": 1758844800,
+                    "time": 1760918400,
                     "value": 1
                 }
             ],
-            "creators": [
+            "publish_cnt": 120049,
+            "video_views": 366084497,
+            "publish_cnt_all": 1683931,
+            "video_views_all": 13178730685,
+            "longevity": {
+                "popular_days": 0,
+                "current_popularity": 0
+            },
+            "audience_ages": [
                 {
-                    "nick_name": "❤️samjhana❤️💕",
-                    "avatar_url": "https://p19-common-sign-useastred.tiktokcdn-eu.com/tos-useast2a-avt-0068-giso/9a1b04464fa32c9f15ae73e1c4fc0973~tplv-tiktokx-cropcenter:100:100.png?dr=14579\u0026refresh_token=65ffb1a7\u0026x-expires=1759125600\u0026x-signature=G3Ndla%2FNrfC4nPp%2F34so84fkfqQ%3D\u0026t=4d5b0474\u0026ps=13740610\u0026shp=a5d48078\u0026shcp=317596d8\u0026idc=my"
-                }
+                    "age_level": 3,
+                    "score": 73
+                },
+                ... /* omit */
             ],
-            "publish_cnt": 2032,
-            "video_views": 7939394,
-            "rank": 1,
-            "rank_diff": 1,
-            "rank_diff_type": 1
-        },
-        ... /* Other results */
-    ]
-    ```
-- With-details: When `Include details` is enabled, an extra `details` object is added to each result. This consumes extra one `Details Event`(\$0.1) per page results.
-
-    ```json
-    [
-        {
-            ..., /* List-only Output */
-            "details": {
-                "info": {
-                    "hashtag_id": "405389",
-                    "hashtag_name": "golive",
-                    "video_url": "https://www.tiktok.com/tag/golive",
+            "audience_interests": [
+                {
+                    "interest_info": {
+                        "id": "10015",
+                        "label": "diversify_10015",
+                        "value": "Campus Life"
+                    },
+                    "score": 117
+                },
+                ... /* omit */
+            ],
+            "audience_countries": [
+                {
                     "country_info": {
-                        "id": "ALL",
-                        "value": "ALL",
-                        "label": "ALL"
+                        "id": "6252001",
+                        "label": "US",
+                        "value": "United States"
                     },
-                    "is_promoted": false,
-                    "trend": [
-                        {
-                            "time": 1758326400,
-                            "value": 0.62
-                        },
-                        {
-                            "time": 1758412800,
-                            "value": 0.66
-                        },
-                        ... /* omit */
-                        {
-                            "time": 1758844800,
-                            "value": 0.99
-                        }
-                    ],
-                    "publish_cnt": 120437,
-                    "video_views": 887726837,
-                    "publish_cnt_all": 542863,
-                    "video_views_all": 4738608858,
-                    "longevity": {
-                        "popular_days": 0,
-                        "current_popularity": 0
-                    },
-                    "audience_ages": [
-                        {
-                            "age_level": 4,
-                            "score": 53
-                        },
-                        ... /* omit */
-                        {
-                            "age_level": 3,
-                            "score": 22
-                        }
-                    ],
-                    "audience_interests": [
-                        {
-                            "interest_info": {
-                                "id": "10008",
-                                "label": "diversify_10008",
-                                "value": "Professional Special Effects"
-                            },
-                            "score": 327
-                        },
-                        ... /* omit */
-                        {
-                            "interest_info": {
-                                "id": "10093",
-                                "label": "diversify_10093",
-                                "value": "Business \u0026 Finance"
-                            },
-                            "score": 169
-                        }
-                    ],
-                    "audience_countries": [
-                        {
-                            "country_info": {
-                                "id": "272103",
-                                "label": "LB",
-                                "value": "Lebanon"
-                            },
-                            "score": 2167
-                        },
-                        ... /* omit */
-                        {
-                            "country_info": {
-                                "id": "798549",
-                                "label": "RO",
-                                "value": "Romania"
-                            },
-                            "score": 153
-                        }
-                    ],
-                    "related_hashtags": [
-                        {
-                            "hashtag_id": "6417",
-                            "hashtag_name": "live",
-                            "video_url": "https://www.tiktok.com/tag/live"
-                        },
-                        ... /* omit */
-                        {
-                            "hashtag_id": "80007445",
-                            "hashtag_name": "straykids",
-                            "video_url": "https://www.tiktok.com/tag/straykids"
-                        }
-                    ],
-                    "related_items": [
-                        {
-                            "item_id": 7549128372564069650,
-                            "cover_uri": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/owKCCniwOEBFD8AAIn6gfIiUoDI8VBEBUmAf5B~tplv-noop.image?t=9276707c\u0026x-expires=1758977488\u0026x-signature=79aEVaQD%2BCkTCDuXpE%2FhUENIbCI%3D"
-                        },
-                        ... /* omit */
-                        {
-                            "item_id": 7551813247855267080,
-                            "cover_uri": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/oQDeSnDkEFA2IvBztCEURbEuBwWxfRnNoPiLgb~tplv-noop.image?t=9276707c\u0026x-expires=1758977498\u0026x-signature=nnBVrNhK%2FhoyT4HjFKxKSdAFhyg%3D"
-                        }
-                    ]
-                }
-            }
-        },
-        ... /* Other results */
-    ]
-    ```
+                    "score": 669
+                },
+                ... /* omit */
+            ],
+            "related_hashtags": [
+                {
+                    "hashtag_id": "1603145068720134",
+                    "hashtag_name": "tiktokbacktoschool",
+                    "video_url": "https://www.tiktok.com/tag/tiktokbacktoschool"
+                },
+                ... /* omit */
+            ],
+            "related_items": [
+                {
+                    "item_id": 7562659435622010000,
+                    "cover_uri": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/o8DTnWfaBd5fRF5IJCyCALoyE5QD7InAjs34f9~tplv-noop.image?t=9276707c&x-expires=1761049429&x-signature=5gVQie6DMmSJ9gb%2FthcK4UaF6hc%3D"
+                },
+                ... /* omit */
+            ]
+        }
+    }
+}
+```
 
 ---
 
-### 📊 Trending Songs (Popular & Breakout)
+### 📊 Trending Songs (Popular) & Trending Songs (Breakout)
 
-`Trending Songs (Popular)`'s page size is **20**; `Trending Songs (Breakout)`'s page size is **20**.
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "20251021142712EE4858F6BD9C05547E9D",
+    "data": {
+        "pagination": {
+            "page": 1,
+            "size": 20,
+            "total": 100,
+            "has_more": true
+        },
+        "sound_list": [
+            {
+                "author": "Doddie Savage",
+                "clip_id": "7552073523387205648",
+                "country_code": "US",
+                "cover": "https://p16-sg.tiktokcdn.com/aweme/720x720/tos-alisg-v-2774/o0iOK0WyiuUzBiKDaAoEAwAZRFAZAxByWEQfss.jpeg",
+                "duration": 60,
+                "if_cml": false,
+                "is_search": false,
+                "link": "https://www.tiktok.com/music/x-7552073523387205648",
+                "on_list_times": null,
+                "promoted": false,
+                "rank": 1,
+                "rank_diff": 0,
+                "rank_diff_type": 2,
+                "related_items": [
+                    {
+                        "item_id": 7562062508232576000,
+                        "cover_uri": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068c799-us/o03a1OMgBIb96x7rAHiAVvR97BfDouEEizAVEe~tplv-noop.image?t=9276707c&x-expires=1761049638&x-signature=4oNk6GWhu7q3VV6KoN7z1SigOGk%3D"
+                    },
+                    {
+                        "item_id": 7561923075134983000,
+                        "cover_uri": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068c799-us/oUixQrIoeA7BDGfDi0LKrRWBSbxvIWikEkQgIB~tplv-noop.image?t=9276707c&x-expires=1761049643&x-signature=o4jb2eS6HAioDVy5J%2BkroP8ta14%3D"
+                    },
+                    {
+                        "item_id": 7562380203083697000,
+                        "cover_uri": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068c799-us/owGlzIn5QFeyEQINNeGeRQjOCfcU9AnQHhATLj~tplv-noop.image?t=9276707c&x-expires=1761049641&x-signature=3gvBMI%2ByG0UIIV4m0H%2F4R3ml78E%3D"
+                    },
+                    {
+                        "item_id": 7562321544534298000,
+                        "cover_uri": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068c799-us/osi7iWHeAA9RAET2oRIjh2iREuEyVVfwBqBmB0~tplv-noop.image?t=9276707c&x-expires=1761049658&x-signature=VlEYb1PGAtJLb1XcNkYRnl2GvRc%3D"
+                    }
+                ],
+                "song_id": "7552084308169672705",
+                "title": "Whoopty Doo",
+                "trend": [
+                    {
+                        "time": 1760745600,
+                        "value": 0
+                    },
+                    {
+                        "time": 1760832000,
+                        "value": 0.19
+                    },
+                    {
+                        "time": 1760918400,
+                        "value": 1
+                    }
+                ],
+                "url_title": "Whoopty-Doo"
+            },
+            ... /* omit */
+        ]
+    }
+}
+```
 
-- List-only: When `Include details` is disabled. One `List Event`(\$0.1) is consumed per page results retrieved.
+---
 
-    ```json
-    [
-        {
-            "author": "Joe Walsh",
-            "clip_id": "6590963034687031301",
-            "country_code": "QA",
-            "cover": "https://p16-sg.tiktokcdn.com/aweme/720x720/tos-alisg-v-2774/oIVBAzmfA6ZoFBC7I3eCZuwDgExtQZAQ6jHTIA.jpeg",
-            "duration": 30,
+### 📊 Song Analytics
+
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "20251021142747AEEF1A91FFA2C1586C33",
+    "data": {
+        "disliked": null,
+        "like_count": null,
+        "liked": null,
+        "sound": {
+            "audience_ages": null,
+            "audience_countries": [
+                {
+                    "country_info": {
+                        "id": "660013",
+                        "label": "FI",
+                        "value": "Finland"
+                    },
+                    "score": 1527
+                },
+                ... /* omit */
+            ],
+            "audience_interests": [
+                {
+                    "interest_info": {
+                        "id": "10002",
+                        "label": "diversify_10002",
+                        "value": "Hilarious Fails"
+                    },
+                    "score": 254
+                },
+                ... /* omit */
+            ],
+            "author": "HUMBE",
+            "clip_id": "7326640926458743557",
+            "country_code": "US",
+            "cover": "https://p16-sg.tiktokcdn.com/aweme/720x720/tos-alisg-v-2774/o4AAbIXCgGA7vQffKGFsAtfDLA6IAIem11T5GU.jpeg",
+            "duration": 12,
             "if_cml": false,
             "is_search": false,
-            "link": "https://www.tiktok.com/music/x-6590963034687031301",
+            "link": "https://www.tiktok.com/music/x-7326640926458743557",
+            "longevity": {
+                "popular_days": 0,
+                "current_popularity": 0
+            },
+            "music_url": null,
             "on_list_times": null,
             "promoted": false,
-            "rank": 1,
+            "rank": null,
             "rank_diff": null,
-            "rank_diff_type": 4,
             "related_items": [
                 {
-                    "item_id": 7553210639578172679,
-                    "cover_uri": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/ocvocuUeDAp2FRsggIFT0ZcDOfwjiRmEBEBnSI~tplv-noop.image?t=9276707c\u0026x-expires=1758976040\u0026x-signature=uF32FCeVEHRrcGqWXbvvujqEyFc%3D"
+                    "item_id": 7562333750168653000,
+                    "cover_uri": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068c799-us/ogQeYL3KAoejWGgwQ8zIXBzSfbII5RGqADCyIh~tplv-noop.image?t=9276707c&x-expires=1761049739&x-signature=1n7FNtcZDc8I%2F2YpjMbxyawp%2Bp8%3D"
                 },
                 ... /* omit */
-                {
-                    "item_id": 7548500246725250321,
-                    "cover_uri": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/o8U1RDQQHDGGARAnIlWICfTDyoLgjgsIlK4ee1~tplv-noop.image?t=9276707c\u0026x-expires=1758976045\u0026x-signature=8BaccExSwrl1c2IgBZrAO4nqOpU%3D"
-                }
             ],
-            "song_id": "6734206429713926145",
-            "title": "Rocky Mountain Way",
+            "song_id": "7299899156654475266",
+            "title": "fantasmas",
             "trend": [
                 {
-                    "time": 1758326400,
-                    "value": 0.55
-                },
-                {
-                    "time": 1758412800,
-                    "value": 0.59
+                    "time": 1760400000,
+                    "value": 0.56
                 },
                 ... /* omit */
                 {
-                    "time": 1758844800,
-                    "value": 1
+                    "time": 1760918400,
+                    "value": 0.87
                 }
             ],
-            "url_title": "Rocky-Mountain-Way"
-        },
-        ... /* Other results */
-    ]
-    ```
-- With-details: When `Include details` is enabled, an extra `details` object is added to each result. This consumes extra one `List Event`(\$0.1) per page results.
-
-    ```json
-    [
-        {
-            ..., /* List-only Output */
-            "details": {
-                "disliked": null,
-                "like_count": null,
-                "liked": null,
-                "sound": {
-                    "audience_ages": [
-                        {
-                            "age_level": 3,
-                            "score": 59
-                        },
-                        ... /* omit */
-                        {
-                            "age_level": 5,
-                            "score": 6
-                        }
-                    ],
-                    "audience_countries": [
-                        {
-                            "country_info": {
-                                "id": "390903",
-                                "label": "GR",
-                                "value": "Greece"
-                            },
-                            "score": 1200
-                        },
-                        ... /* omit */
-                        {
-                            "country_info": {
-                                "id": "2635167",
-                                "label": "GB",
-                                "value": "United Kingdom"
-                            },
-                            "score": 440
-                        }
-                    ],
-                    "audience_interests": [
-                        {
-                            "interest_info": {
-                                "id": "10026",
-                                "label": "diversify_10026",
-                                "value": "Beauty"
-                            },
-                            "score": 294
-                        },
-                        ... /* omit */
-                        {
-                            "interest_info": {
-                                "id": "10011",
-                                "label": "diversify_10011",
-                                "value": "Other Talent"
-                            },
-                            "score": 234
-                        }
-                    ],
-                    "author": "Joe Walsh",
-                    "clip_id": "6590963034687031301",
-                    "country_code": "QA",
-                    "cover": "https://p16-sg.tiktokcdn.com/aweme/720x720/tos-alisg-v-2774/oIVBAzmfA6ZoFBC7I3eCZuwDgExtQZAQ6jHTIA.jpeg",
-                    "duration": 30,
-                    "if_cml": false,
-                    "is_search": false,
-                    "link": "https://www.tiktok.com/music/x-6590963034687031301",
-                    "longevity": {
-                        "popular_days": 0,
-                        "current_popularity": 0
-                    },
-                    "music_url": null,
-                    "on_list_times": null,
-                    "promoted": false,
-                    "rank": null,
-                    "rank_diff": null,
-                    "related_items": [
-                        {
-                            "item_id": 7553210639578172679,
-                            "cover_uri": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/ocvocuUeDAp2FRsggIFT0ZcDOfwjiRmEBEBnSI~tplv-noop.image?t=9276707c\u0026x-expires=1758976920\u0026x-signature=aGjpw6TNFsBfmcwinWwOB8G1hus%3D"
-                        },
-                        ... /* omit */
-                        {
-                            "item_id": 7528454908945894678,
-                            "cover_uri": "https://p19-vod-sign-useast2a.tiktokcdn-eu.com/tos-no1a-p-0037-no/ocpKQI03eDAe4u1O2OFgLjQB7IrAUDy9QAfy0E~tplv-noop.image?t=9276707c\u0026x-expires=1758976922\u0026x-signature=MmpSZBNLs5zAAmBi8QStFeDvv1U%3D"
-                        }
-                    ],
-                    "song_id": "6734206429713926145",
-                    "title": "Rocky Mountain Way",
-                    "trend": [
-                        {
-                            "time": 1758326400,
-                            "value": 0.55
-                        },
-                        {
-                            "time": 1758412800,
-                            "value": 0.59
-                        },
-                        ... /* omit */
-                        {
-                            "time": 1758844800,
-                            "value": 1
-                        }
-                    ],
-                    "url_title": "Rocky-Mountain-Way"
-                }
-            }
-        },
-        ... /* Other results */
-    ]
-    ```
+            "url_title": "fantasmas"
+        }
+    }
+}
+```
 
 ---
 
 ### 📊 Trending Creators
 
-`Trending Creators`'s page size is **50**.
-
-- One `List Event`(\$0.1) is consumed per page results retrieved.
-
-    ```json
-    [
-        {
-            "tcm_id": "7414477993612935173",
-            "user_id": "62133858422239232",
-            "nick_name": "Fernanda",
-            "avatar_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/200b649d30f76f1238d771f4aff51ee1~tplv-tiktokx-cropcenter:100:100.png?dr=14579\u0026refresh_token=86148874\u0026x-expires=1759125600\u0026x-signature=lff4lmv3BlQCJooKb7%2BkXdszfyk%3D\u0026t=4d5b0474\u0026ps=13740610\u0026shp=a5d48078\u0026shcp=317596d8\u0026idc=sg1",
-            "country_code": "US",
-            "follower_cnt": 9135515,
-            "liked_cnt": 668294555,
-            "tt_link": "https://www.tiktok.com/@ferchugimenez",
-            "tcm_link": "https://creatormarketplace.tiktok.com/ad#/author/7414477993612935173",
-            "items": [
-                {
-                    "item_id": "7444674312784645432",
-                    "cover_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/oQIBhn2EeBMUWQR5wVQACFEBtlDxgUDdAfoB8J~tplv-noop.image?t=9276707c\u0026x-expires=1758975932\u0026x-signature=CZie51aNoVsZjKdbTQ9KGoafBnI%3D",
-                    "tt_link": "https://www.tiktok.com/@author/video/7444674312784645432",
-                    "vv": 13733332,
-                    "liked_cnt": 516217,
-                    "create_time": 1733348322
-                },
-                ... /* omit */
-                {
-                    "item_id": "7095849716054789381",
-                    "cover_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/e43ff589d5244725b89cb58dbebf0b00~tplv-noop.image?t=9276707c\u0026x-expires=1758975916\u0026x-signature=BroLgq4VFjuEMh%2BCp2rgN7XZSng%3D",
-                    "tt_link": "https://www.tiktok.com/@author/video/7095849716054789381",
-                    "vv": 10422320,
-                    "liked_cnt": 1547779,
-                    "create_time": 1652131259
-                }
-            ]
-        },
-        ... /* Other results */
-    ]
-    ```
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "20251021142829BAE766CD7E38FC4A990F",
+    "data": {
+        "creators": [
+            {
+                "tcm_id": "7414477993612935173",
+                "user_id": "62133858422239232",
+                "nick_name": "Fernanda",
+                "avatar_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/3fa0e612da6c7528e77ef65fbb79a932~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=2b43df9f&x-expires=1761199200&x-signature=7pFx84EiRAXO%2Fs308G6%2BVrYCBWg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my",
+                "country_code": "US",
+                "follower_cnt": 9135515,
+                "liked_cnt": 668294555,
+                "tt_link": "https://www.tiktok.com/@ferchugimenez",
+                "tcm_link": "https://creatormarketplace.tiktok.com/ad#/author/7414477993612935173",
+                "items": [
+                    {
+                        "item_id": "7444674312784645432",
+                        "cover_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/oQIBhn2EeBMUWQR5wVQACFEBtlDxgUDdAfoB8J~tplv-noop.image?t=9276707c&x-expires=1761049779&x-signature=GPU6SW3m4B9ers8E%2B%2BJOjNW9dVg%3D",
+                        "tt_link": "https://www.tiktok.com/@author/video/7444674312784645432",
+                        "vv": 13733332,
+                        "liked_cnt": 516217,
+                        "create_time": 1733348322
+                    },
+                    {
+                        "item_id": "7200099364549774598",
+                        "cover_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/290e93cfbb6249e484c263f1024b612b_1676403776~tplv-noop.image?t=9276707c&x-expires=1761049744&x-signature=indrHl%2BqhJU7%2BjYBIJJHvGXajEY%3D",
+                        "tt_link": "https://www.tiktok.com/@author/video/7200099364549774598",
+                        "vv": 17975712,
+                        "liked_cnt": 306648,
+                        "create_time": 1676403774
+                    },
+                    {
+                        "item_id": "7095849716054789381",
+                        "cover_url": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/e43ff589d5244725b89cb58dbebf0b00~tplv-noop.image?t=9276707c&x-expires=1761049763&x-signature=BeaIPP%2B6PpzC8iY8YgRG2nhfws4%3D",
+                        "tt_link": "https://www.tiktok.com/@author/video/7095849716054789381",
+                        "vv": 10422320,
+                        "liked_cnt": 1547779,
+                        "create_time": 1652131259
+                    }
+                ]
+            },
+            ... /* omit */
+        ],
+        "pagination": {
+            "page": 1,
+            "size": 50,
+            "total": 459,
+            "has_more": true
+        }
+    }
+}
+```
 
 ---
 
 ### 📊 Trending Videos
 
-`Trending Videos`'s page size is **20**.
-
-- One `List Event`(\$0.1) is consumed per page results retrieved.
-
-    ```json
-    [
-        {
-            "country_code": "US",
-            "cover": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068c799-us/og8yzpBAHECQneA3ffMskRQ0cIbq3SjO0XUItk~tplv-noop.image?t=9276707c\u0026x-expires=1758975640\u0026x-signature=1yuyCigEelUv9uPnDsHb9z8Aldc%3D",
-            "duration": 48,
-            "id": "7546244699665812750",
-            "item_id": "7546244699665812750",
-            "item_url": "https://www.tiktok.com/@mnm_pipi/video/7546244699665812750",
-            "region": "United States",
-            "title": "#Peacockpartner The NFL's best games are on Sunday Night Football! Here are four predictions about who will shine the brightest in primetime in 2025. Catch all the SNF action streaming on Peacock to see if these picks come true! #nfl #nflpicks #nfl2025 #paperfootballguy "
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "202510211429195707715B59F5C85B409C",
+    "data": {
+        "pagination": {
+            "has_more": true,
+            "limit": 20,
+            "page": 1,
+            "total_count": 500
         },
-        ... /* Other results */
-    ]
-    ```
+        "videos": [
+            {
+                "country_code": "US",
+                "cover": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068c799-us/o4eoqQ7gGWpCvCeVAIeJAGKggL4JyRII78Ij5i~tplv-noop.image?t=9276707c&x-expires=1761049792&x-signature=ZZKnqKe37bvk%2BUT3zZwoyK6Tk1w%3D",
+                "duration": 31,
+                "id": "7552950479534279967",
+                "item_id": "7552950479534279967",
+                "item_url": "https://www.tiktok.com/@mnm_pipi/video/7552950479534279967",
+                "region": "United States",
+                "title": "The Delonghi Dedica Duo Espresso Machine has been such a great little addition to our kitchen! I’ve been starting off my mornings with this protein shake and it’s been so fun using the machine. Super easy to use and love the pretty neutral color. Also comes in other beautiful colors as well, including pink and green. You can shop these beauties @Walmart #walmartpartner"
+            },
+            ... /* omit */
+        ]
+    }
+}
+```
 
 ---
 
@@ -823,28 +887,25 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 Pricing model: [Pay per event](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event)
 
-| Event                                                    | Description                                                                                                                    | Price    | Unit           |
-|----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|----------|----------------|
-| Actor Start                                              | Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event). | \$0.0001 | \$0.0001/actor |
-| List Event(per page)                                     | One list event is consumed for every page retrieved.                                                                           | \$0.1    | \$0.1/page     |
-| Details Event(per page)                                  | One details event is consumed for every page retrieved, when `Include details` is enabled.                                     | \$0.1    | \$0.1/page     |
-| Keyframes Event(per page, per keyframe option)           | One keyframes event is consumed per keyframe option for every page retrieved, when `Include keyframe metrics` is selected.     | \$0.1    | \$0.1/page     |
+The trigger logic of the event is the number of items that return the result.
 
-For target:
-
-| Target                                         | Page size |
-|------------------------------------------------|-----------|
-| Top Ads Dashboard                              | 20        |
-| Top Ads Spotlight                              | 50        |
-| Keyword Insights                               | 50        |
-| Keyword Insights (Related videos)              | 50        |
-| Keyword Insights (Keyword examples)            | 50        |
-| Keyword Insights (Related Keywords & Hashtags) | 50        |
-| Trending Hashtags                              | 60        |
-| Trending Songs (Popular)                       | 20        |
-| Trending Songs (Breakout)                      | 20        |
-| Trending Creators                              | 50        |
-| Trending Videos                                | 20        |
+|Target| Cost          |
+|---|---------------|
+|[Top Ads Dashboard)](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)| 0.001$ / item |
+|[Top Ads Spotlight)](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)| 0.001$ / item |
+|[Ad Analytics](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.001$ / time |
+|[Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.001$ / time |
+|[Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)| 0.001$ / item |
+|[Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)| 0.001$ / time |
+|[Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)| 0.001$ / item |
+|[Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)| 0.001$ / time |
+|[Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)| 0.001$ / item |
+|[Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)| 0.001$ / time |
+|[Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)| 0.001$ / item |
+|[Trending Songs Breakout](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)| 0.001$ / item |
+|[Song Analytics](https://ads.tiktok.com/business/creativecenter/song/fantasmas-7326640926458743557/pc/en)| 0.001$ / time |
+|[Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)|      0.001$ / item    |
+|[Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)|          0.001$ / item |
 
 
 ## 📞 Support
