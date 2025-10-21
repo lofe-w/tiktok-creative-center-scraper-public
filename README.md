@@ -891,21 +891,21 @@ The trigger logic of the event is the number of items that return the result.
 
 |Target| Cost          |
 |---|---------------|
-|[Top Ads Dashboard)](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)| 0.001$ / item |
-|[Top Ads Spotlight)](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)| 0.001$ / item |
-|[Ad Analytics](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.001$ / time |
-|[Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.001$ / time |
-|[Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)| 0.001$ / item |
-|[Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)| 0.001$ / time |
-|[Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)| 0.001$ / item |
-|[Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)| 0.001$ / time |
-|[Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)| 0.001$ / item |
-|[Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)| 0.001$ / time |
-|[Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)| 0.001$ / item |
-|[Trending Songs Breakout](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)| 0.001$ / item |
-|[Song Analytics](https://ads.tiktok.com/business/creativecenter/song/fantasmas-7326640926458743557/pc/en)| 0.001$ / time |
-|[Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)|      0.001$ / item    |
-|[Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)|          0.001$ / item |
+|[Top Ads Dashboard)](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)| 0.002$ / item |
+|[Top Ads Spotlight)](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)| 0.002$ / item |
+|[Ad Analytics](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.002$ / time |
+|[Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.002$ / time |
+|[Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)| 0.002$ / item |
+|[Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)| 0.002$ / time |
+|[Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)| 0.002$ / item |
+|[Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)| 0.002$ / time |
+|[Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)| 0.002$ / item |
+|[Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)| 0.002$ / time |
+|[Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)| 0.002$ / item |
+|[Trending Songs Breakout](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)| 0.002$ / item |
+|[Song Analytics](https://ads.tiktok.com/business/creativecenter/song/fantasmas-7326640926458743557/pc/en)| 0.002$ / time |
+|[Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)|      0.002$ / item    |
+|[Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)|          0.002$ / item |
 
 
 ## 📞 Support
