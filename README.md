@@ -18,6 +18,7 @@ Your ultimate tool for unlocking high-value, real-time data from the TikTok Crea
     * [Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)
     * [Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
     * [Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
+    * [Creative Insights](https://ads.tiktok.com/business/creativecenter/creative-pattern/pc/en)
     * [Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)
     * [Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)
     * [Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)
@@ -35,7 +36,7 @@ Your ultimate tool for unlocking high-value, real-time data from the TikTok Crea
 
 * **Target** `target`: (Required) Select the data source. Your choice determines which settings below are used.
 
-  One of the `Top Ads Dashboard`, `Top Ads Spotlight`, `Ad Analytics`, `Ad Keyframe`, `Ad Percentile`, `Ad Recommend`, `Keyword Insights`, `Keyword Insights (Related videos)`, `Keyword Insights (Keyword examples)`, `Keyword Insights (Related Keywords & Hashtags)`, `Trending Hashtags`, `Hashtag Analytics`, `Trending Songs (Popular)`, `Trending Songs (Breakout)`, `Song Analytics`, `Trending Creators`, `Trending Videos`.
+  One of the `Top Ads Dashboard`, `Top Ads Spotlight`, `Ad Analytics`, `Ad Keyframe`, `Ad Percentile`, `Ad Recommend`, `Keyword Insights`, `Keyword Insights (Related videos)`, `Keyword Insights (Keyword examples)`, `Keyword Insights (Related Keywords & Hashtags)`, `Creative Insights`, `Trending Hashtags`, `Hashtag Analytics`, `Trending Songs (Popular)`, `Trending Songs (Breakout)`, `Song Analytics`, `Trending Creators`, `Trending Videos`.
 
 * **Cookies** `cookies`: (Required) Your authentication cookie after logging into the [TikTok Creative Center](https://ads.tiktok.com/business/creativecenter/pc/en) platform. Way to obtain:
 
@@ -56,7 +57,7 @@ These settings are only used when the `Target` is set to `Top Ads Dashboard`.
 * **Ad format** `dashboard_ad_format`: (Optional) Filter by ad format. 'Spark ads' use organic posts; 'Non-Spark ads' are traditional.
 * **Likes** `dashboard_likes`: (Optional) Filter ads by the percentile range of likes received. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_likes.json)
 * **Sort by** `dashboard_sort_by`: (Required) Select the metric for sorting the ad results.
-* **Limit** `dashboard_page`: (Required) Page number.
+* **Page** `dashboard_page`: (Required) Page number.
 * **Limit** `dashboard_limit`: (Required) Page size.
 
 ---
@@ -66,7 +67,7 @@ These settings are only used when the `Target` is set to `Top Ads Dashboard`.
 These settings are only used when the `Target` is set to `Top Ads Spotlight`.
 
 * **Industry** `spotlight_industry`: (Optional) Filter ads by one or more industries for Spotlight. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/spotlight_industry.json)
-* **Limit** `spotlight_page`: (Required) Page number.
+* **Page** `spotlight_page`: (Required) Page number.
 * **Limit** `spotlight_limit`: (Required) Page size.
 
 ---
@@ -121,7 +122,7 @@ These settings are only used when the `Target` is set to `Keyword Insights`.
 * **Period** `keyword_period`: (Required) Filter keywords by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
 * **Order by** `keyword_order_by`: (Required) Select the metric for sorting the keyword results. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_order_by.json)
 * **Order type** `keyword_order_type`: (Required) Select the sorting type for the keyword results.
-* **Limit** `keyword_page`: (Required) Page number.
+* **Page** `keyword_page`: (Required) Page number.
 * **Limit** `keyword_limit`: (Required) Page size.
 
 ---
@@ -150,7 +151,7 @@ These settings are only used when the `Target` is set to `Keyword Insights (Keyw
 * **Period** `kexamples_period`: (Required) Filter keyword examples by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
 * **Order by** `kexamples_order_by`: (Required) Select the metric for sorting the keyword examples results.
 * **Order type** `kexamples_order_type`: (Required) Select the sorting type for the keyword examples.
-* **Limit** `kexamples_page`: (Required) Page number.
+* **Page** `kexamples_page`: (Required) Page number.
 * **Limit** `kexamples_limit`: (Required) Page size.
 
 ---
@@ -164,8 +165,21 @@ These settings are only used when the `Target` is set to `Keyword Insights (Rela
 * **Region** `krelated_region`: (Optional) Filter results by one or more geographical regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_region.json)
 * **Industry** `krelated_industry`: (Optional) Filter keywords by one or more industries. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_industry.json)
 * **Period** `krelated_period`: (Required) Filter keywords by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_period.json)
-* **limit** `krelated_page`: (Required) Page number.
+* **Page** `krelated_page`: (Required) Page number.
 * **limit** `krelated_limit`: (Required) Page size.
+
+---
+### ⚙️ Creative Insights Settings
+
+These settings are only used when the `Target` is set to `Creative Insights`.
+
+* **Industry** `creative_insights_industry`: (Required) Filter creatives by industry. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creative_insights_industry.json)
+* **Period type** `creative_insights_period_type`: (Required) Define the date filter type for the creatives data.
+* **Date** `creative_insights_date`: (Required) When 'week' is selected, enter a Sunday date (e.g., 2025-10-12), up to last week. When 'month' is selected, enter the first day of the month (e.g., 2025-09-01), up to last month.
+* **Order field** `creative_insights_order_field`: (Required) Select the metric for sorting the creatives results. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creative_insights_order_field.json)
+* **Order type** `creative_insights_order_type`: (Required) Select the sorting type for the creatives results.
+* **Page** `creative_insights_page`: (Required) Page number.
+* **Limit** `creative_insights_limit`: (Required) Page size.
 
 ---
 
@@ -178,7 +192,7 @@ These settings are only used when the `Target` is set to `Trending Hashtags`.
 * **Period** `hashtags_period`: (Required) Define the time frame for the trending hashtags data. Options: "7", "30", "120"
 * **New to top 100** `hashtags_new_to_top_100`: (Optional) Show only hashtags that have recently entered the top 100 chart.
 * **Search** `hashtags_search`: (Optional) Search by hashtag.
-* **Limit** `hashtags_page`: (Required) Page number.
+* **Page** `hashtags_page`: (Required) Page number.
 * **Limit** `hashtags_limit`: (Required) Page size.
 
 ---
@@ -202,7 +216,7 @@ These settings are only used when the `Target` is set to `Trending Songs (Popula
 * **New to top 100** `popular_new_to_top_100`: (Optional) Show only songs that have recently entered the top 100 chart.
 * **Approved for business use** `popular_approved_for_business_use`: (Optional) Show only songs pre-approved for commercial use.
 * **Search** `popular_search`: (Optional) Search by song or artist.
-* **Limit** `popular_page`: (Required) Page number.
+* **Page** `popular_page`: (Required) Page number.
 * **Limit** `popular_limit`: (Required) Page size.
 
 ---
@@ -213,7 +227,7 @@ These settings are only used when the `Target` is set to `Trending Songs (Breako
 
 * **Country** `breakout_country`: (Required) Select the country to view its breakout songs. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/breakout_country.json)
 * **Search** `breakout_search`: (Optional) Search by song or artist.
-* **Limit** `breakout_page`: (Required) Page number.
+* **Page** `breakout_page`: (Required) Page number.
 * **Limit** `breakout_limit`: (Required) Page size.
 
 ---
@@ -237,7 +251,7 @@ These settings are only used when the `Target` is set to `Trending Creators`.
 * **Followers** `creators_followers`: (Optional) Filter creators by their number of followers.
 * **Sort by** `creators_sort_by`: (Required) Select the metric for sorting the creators. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creators_sort_by.json)
 * **Search** `creators_search`: (Optional) Search by creator.
-* **Limit** `creators_page`: (Required) Page number.
+* **Page** `creators_page`: (Required) Page number.
 * **Limit** `creators_limit`: (Required) Page size.
 
 ---
@@ -249,7 +263,7 @@ These settings are only used when the `Target` is set to `Trending Videos`.
 * **Country** `videos_country`: (Required) Select the geographical country for trending videos. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/videos_country.json)
 * **Period** `videos_period`: (Required) Define the time frame for the trending videos data. [Options](https://github.com/lofe-w/tiktok-creative-center-scraper-public/blob/main/options/videos_period.json)
 * **Sort by** `videos_order_by`: (Required) Select the metric for sorting the trending videos. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/videos_order_by.json)
-* **Limit** `videos_page`: (Required) Page number.
+* **Page** `videos_page`: (Required) Page number.
 * **Limit** `videos_limit`: (Required) Page size.
 
 ---
@@ -552,6 +566,41 @@ The Actor returns a dataset of items. The structure of each item depends on the 
             },
             ... /* omit */
         ]
+    }
+}
+```
+
+---
+
+### 📊 Creative Insights
+
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "2025102120015221EBA94955F975D4C69D",
+    "data": {
+        "list": [
+            {
+                "ctr": 44.45,
+                "high_spending_rate": 2.94,
+                "high_spending_rate_change": -14.71,
+                "id": 10101102000,
+                "label_info": {
+                    "id": 10101102000,
+                    "value": "has shooting",
+                    "label": "pattern_label_10101102000"
+                },
+                "play_over_rate": 42.58
+            },
+            ... /* omit */
+        ],
+        "pagination": {
+            "page": 1,
+            "size": 20,
+            "total": 12,
+            "has_more": false
+        }
     }
 }
 ```
@@ -966,25 +1015,26 @@ Pricing model: [Pay per event](https://docs.apify.com/platform/actors/publishing
 
 The trigger logic of the event is the number of items that return the result.
 
-|Target| Cost          |
-|---|---------------|
-|[Top Ads Dashboard)](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)| 0.002$ / item |
-|[Top Ads Spotlight)](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)| 0.002$ / item |
-|[Ad Analytics](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.002$ / time |
-|[Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.002$ / time |
-|[Ad Percentile](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.002$ / time |
-|[Ad Recommend](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)| 0.002$ / time |
-|[Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)| 0.002$ / item |
-|[Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)| 0.002$ / time |
-|[Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)| 0.002$ / item |
-|[Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)| 0.002$ / time |
-|[Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)| 0.002$ / item |
-|[Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)| 0.002$ / time |
-|[Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)| 0.002$ / item |
-|[Trending Songs Breakout](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)| 0.002$ / item |
-|[Song Analytics](https://ads.tiktok.com/business/creativecenter/song/fantasmas-7326640926458743557/pc/en)| 0.002$ / time |
-|[Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)|      0.002$ / item    |
-|[Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)|          0.002$ / item |
+| Target                                                                                                                     | Cost          |
+|----------------------------------------------------------------------------------------------------------------------------|---------------|
+| [Top Ads Dashboard)](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)                              | 0.002$ / item |
+| [Top Ads Spotlight)](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)                         | 0.002$ / item |
+| [Ad Analytics](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)                            | 0.002$ / time |
+| [Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)                             | 0.002$ / time |
+| [Ad Percentile](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)                           | 0.002$ / time |
+| [Ad Recommend](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)                            | 0.002$ / time |
+| [Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)                                  | 0.002$ / item |
+| [Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)                 | 0.002$ / time |
+| [Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)            | 0.002$ / item |
+| [Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en) | 0.002$ / time |
+| [Creative Insights](https://ads.tiktok.com/business/creativecenter/creative-pattern/pc/en)                                 | 0.002$ / item |
+| [Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)                      | 0.002$ / item |
+| [Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)                                     | 0.002$ / time |
+| [Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)                   | 0.002$ / item |
+| [Trending Songs Breakout](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)                  | 0.002$ / item |
+| [Song Analytics](https://ads.tiktok.com/business/creativecenter/song/fantasmas-7326640926458743557/pc/en)                  | 0.002$ / time |
+| [Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)                      | 0.002$ / item |
+| [Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)                                | 0.002$ / item |
 
 ## 📞 Support
 
