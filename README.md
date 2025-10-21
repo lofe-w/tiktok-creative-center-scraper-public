@@ -19,6 +19,7 @@ Your ultimate tool for unlocking high-value, real-time data from the TikTok Crea
     * [Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
     * [Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
     * [Creative Insights](https://ads.tiktok.com/business/creativecenter/creative-pattern/pc/en)
+    * [Top Products](https://ads.tiktok.com/business/creativecenter/top-products/pc/en)
     * [Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)
     * [Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)
     * [Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)
@@ -36,7 +37,7 @@ Your ultimate tool for unlocking high-value, real-time data from the TikTok Crea
 
 * **Target** `target`: (Required) Select the data source. Your choice determines which settings below are used.
 
-  One of the `Top Ads Dashboard`, `Top Ads Spotlight`, `Ad Analytics`, `Ad Keyframe`, `Ad Percentile`, `Ad Recommend`, `Keyword Insights`, `Keyword Insights (Related videos)`, `Keyword Insights (Keyword examples)`, `Keyword Insights (Related Keywords & Hashtags)`, `Creative Insights`, `Trending Hashtags`, `Hashtag Analytics`, `Trending Songs (Popular)`, `Trending Songs (Breakout)`, `Song Analytics`, `Trending Creators`, `Trending Videos`.
+  One of the `Top Ads Dashboard`, `Top Ads Spotlight`, `Ad Analytics`, `Ad Keyframe`, `Ad Percentile`, `Ad Recommend`, `Keyword Insights`, `Keyword Insights (Related videos)`, `Keyword Insights (Keyword examples)`, `Keyword Insights (Related Keywords & Hashtags)`, `Creative Insights`, `Top Products`, `Trending Hashtags`, `Hashtag Analytics`, `Trending Songs (Popular)`, `Trending Songs (Breakout)`, `Song Analytics`, `Trending Creators`, `Trending Videos`.
 
 * **Cookies** `cookies`: (Required) Your authentication cookie after logging into the [TikTok Creative Center](https://ads.tiktok.com/business/creativecenter/pc/en) platform. Way to obtain:
 
@@ -169,6 +170,7 @@ These settings are only used when the `Target` is set to `Keyword Insights (Rela
 * **limit** `krelated_limit`: (Required) Page size.
 
 ---
+
 ### ⚙️ Creative Insights Settings
 
 These settings are only used when the `Target` is set to `Creative Insights`.
@@ -180,6 +182,21 @@ These settings are only used when the `Target` is set to `Creative Insights`.
 * **Order type** `creative_insights_order_type`: (Required) Select the sorting type for the creatives results.
 * **Page** `creative_insights_page`: (Required) Page number.
 * **Limit** `creative_insights_limit`: (Required) Page size.
+
+---
+
+### ⚙️ Top Products Settings
+
+* **Level of date** `top_products_level`: (Required) Define the level of date.
+* **Country** `top_products_country`: (Required) Filter products by country. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/top_products_country.json)
+* **First category** `top_products_first_category`: (Required) Filter products by one or more first category. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/top_products_first_category.json)
+* **Second category** `top_products_second_category`: (Required) Filter products by one or more second category. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/top_products_second_category.json)
+* **Period type** `top_products_period_type`: (Required) Define the period filter type for the products data.
+* **Date** `top_products_date`: (Required) When 'week' is selected, enter a Sunday date (e.g., 2025-10-12), up to last week. When 'month' is selected, enter the first day of the month (e.g., 2025-09-01), up to last month.
+* **Order field** `top_products_order_field`: (Required) Select the metric for sorting the creatives results. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/top_products_order_field.json)
+* **Order type** `top_products_order_type`: (Required) Select the sorting type for the creatives results.
+* **Page** `top_products_page`: (Required) Page number.
+* **Limit** `top_products_limit`: (Required) Page size.
 
 ---
 
@@ -600,6 +617,62 @@ The Actor returns a dataset of items. The structure of each item depends on the 
             "size": 20,
             "total": 12,
             "has_more": false
+        }
+    }
+}
+```
+
+---
+
+### 📊 Top Products
+
+```json
+{
+    "code": 0,
+    "msg": "OK",
+    "request_id": "202510212112164B0B3BA36F55E13F6C6D",
+    "data": {
+        "list": [
+            {
+                "comment": 0,
+                "cost": 10,
+                "cover_url": null,
+                "cpa": 0,
+                "ctr": 8.27,
+                "cvr": 0,
+                "ecom_type": "l3",
+                "first_ecom_category": {
+                    "id": "700437",
+                    "label": "category_700437",
+                    "value": "Food & Beverages"
+                },
+                "impression": 1210,
+                "like": 11,
+                "play_six_rate": 33.33,
+                "post": 17,
+                "post_change": -11.11,
+                "second_ecom_category": {
+                    "id": "915080",
+                    "label": "category_915080",
+                    "parent_id": "700437",
+                    "value": "Staples & Cooking Essentials"
+                },
+                "share": 0,
+                "third_ecom_category": {
+                    "id": "919048",
+                    "label": "category_919048",
+                    "parent_id": "915080",
+                    "value": "Sugar & Sweeteners"
+                },
+                "url_title": "Sugar-Sweeteners"
+            },
+            ... /* omit */
+        ],
+        "pagination": {
+            "page": 1,
+            "size": 20,
+            "total": 44,
+            "has_more": true
         }
     }
 }
@@ -1028,6 +1101,7 @@ The trigger logic of the event is the number of items that return the result.
 | [Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)            | 0.002$ / item |
 | [Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en) | 0.002$ / time |
 | [Creative Insights](https://ads.tiktok.com/business/creativecenter/creative-pattern/pc/en)                                 | 0.002$ / item |
+| [Top Products](https://ads.tiktok.com/business/creativecenter/top-products/pc/en)                                          | 0.002$ / item |
 | [Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)                      | 0.002$ / item |
 | [Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)                                     | 0.002$ / time |
 | [Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)                   | 0.002$ / item |
