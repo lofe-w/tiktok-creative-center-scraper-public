@@ -1,35 +1,54 @@
 # TikTok Creative Center Scraper
 
-Your ultimate tool for unlocking high-value, real-time data from the TikTok Creative Center. Designed for marketers, data analysts, and brands, this is the only Actor you need to master the full spectrum of TikTok Creative Center intelligence.
+Scrape currently supported TikTok Creative Center Top Ads data for marketing intelligence and competitive analysis. Legacy Keyword Insights, Creative Insights, Top Products, and Trends targets remain documented below for historical reference, but they are deprecated in Actor version 0.2.0.
+
+> **Deprecation notice for 0.2.0:** TikTok deprecated the upstream APIs used by Keyword Insights, Creative Insights, Top Products, Trending Hashtags, Hashtag Analytics, Trending Songs, Song Analytics, Trending Creators, and Trending Videos. These targets are no longer selectable in the input schema and runs that submit them through saved/API input fail immediately before any upstream request or charge. TikTok has not published official stable replacements for these targets.
 
 [Start Now (On Apify)](https://apify.com/doliz/tiktok-creative-center-scraper)
 
 ## ✨ Key Features
 
 * **⚡️ Fast & Efficient**: Bypasses slow UI interactions by calling the backend API directly, saving you significant time and platform costs.
-* **🎯 All-in-one Scraping**: A single Actor to rule them all! Scrape multiple pages from the Creative Center, including:
-    * [Top Ads Dashboard)](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)
-    * [Top Ads Spotlight)](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)
+* **🎯 Supported Scraping**: Actor version 0.2.0 supports the Creative Center Top Ads surfaces that still have working upstream APIs:
+    * [Top Ads Dashboard](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)
+    * [Top Ads Spotlight](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)
     * [Ad Analytics](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
     * [Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
     * [Ad Percentile](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
     * [Ad Recommend](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
-    * [Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)
-    * [Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)
-    * [Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
-    * [Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
-    * [Creative Insights](https://ads.tiktok.com/business/creativecenter/creative-pattern/pc/en)
-    * [Top Products](https://ads.tiktok.com/business/creativecenter/top-products/pc/en)
-    * [Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)
-    * [Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)
-    * [Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)
-    * [Trending Songs Breakout](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)
-    * [Song Analytics](https://ads.tiktok.com/business/creativecenter/song/fantasmas-7326640926458743557/pc/en)
-    * [Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)
-    * [Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)
+* **⚠️ Deprecated Legacy Targets**: The following targets are retained in documentation for reference but are not selectable or runnable in 0.2.0:
+    * [Deprecated: Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)
+    * [Deprecated: Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)
+    * [Deprecated: Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
+    * [Deprecated: Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)
+    * [Deprecated: Creative Insights](https://ads.tiktok.com/business/creativecenter/creative-pattern/pc/en)
+    * [Deprecated: Top Products](https://ads.tiktok.com/business/creativecenter/top-products/pc/en)
+    * [Deprecated: Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)
+    * [Deprecated: Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)
+    * [Deprecated: Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)
+    * [Deprecated: Trending Songs Breakout](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)
+    * [Deprecated: Song Analytics](https://ads.tiktok.com/business/creativecenter/song/fantasmas-7326640926458743557/pc/en)
+    * [Deprecated: Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)
+    * [Deprecated: Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)
 
 * **🔎 Powerful Filtering**: Utilize a rich set of input parameters to precisely target the data you need, mirroring the functionality of the Creative Center website.
 * **🔧 Actively Maintained**: This is a commercial Actor. I am committed to maintaining it to adapt to TikTok's changes and ensure its continued reliability.
+
+## 💡 Best practices
+
+This Actor operates by directly accessing TikTok's backend API. Please be aware that TikTok imposes undisclosed rate limits on its API. To ensure stable operation and avoid your requests being throttled, we strongly recommend following these best practices:
+
+### 💡 Utilize Multiple Accounts (Cookies):
+
+By providing a pool of account cookies, and rotate through them for different requests. This effectively distributes the request load and significantly reduces the risk of any single account being rate-limited due to high traffic.
+
+### 💡 Limit the number of concurrent requests
+
+For time-synchronized data, if a large number of API interfaces are called at the same time, the request may be throttled.
+
+In this case, you can implement [Rate Limiting](https://en.wikipedia.org/wiki/Rate_limiting) on the client side, to control the number of concurrent requests. An example is the [Token Bucket Algorithm](https://en.wikipedia.org/wiki/Token_bucket). Tokens are issued according to the rate limit rules (for example, 10 tokens are issued per second). Before making a request, try to obtain the token, if there are no token currently available, wait for a period of time, then try again.
+
+A more robust implementation is to use [Message Queuing](https://en.wikipedia.org/wiki/Message_queue). The timing script is not directly responsible for requesting the API, but uses a [producer-consumer](https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem) Model. Push the requested task to the message queue, and a dedicated consumer takes the task from the queue for consumption (through an API request). You can limit the number of concurrent users by limiting the number of concurrent consumers for a certain type of task or using a rate limit. Tasks that fail to execute, can be pushed back into the queue (and set a certain delay) to retry.
 
 ## ⚙️ Input Configuration
 
@@ -37,7 +56,7 @@ Your ultimate tool for unlocking high-value, real-time data from the TikTok Crea
 
 * **Target** `target`: (Required) Select the data source. Your choice determines which settings below are used.
 
-  One of the `Top Ads Dashboard`, `Top Ads Spotlight`, `Ad Analytics`, `Ad Keyframe`, `Ad Percentile`, `Ad Recommend`, `Keyword Insights`, `Keyword Insights (Related videos)`, `Keyword Insights (Keyword examples)`, `Keyword Insights (Related Keywords & Hashtags)`, `Creative Insights`, `Top Products`, `Trending Hashtags`, `Hashtag Analytics`, `Trending Songs (Popular)`, `Trending Songs (Breakout)`, `Song Analytics`, `Trending Creators`, `Trending Videos`.
+  One of the currently supported targets: `Top Ads Dashboard`, `Top Ads Spotlight`, `Ad Analytics`, `Ad Keyframe`, `Ad Percentile`, `Ad Recommend`. Deprecated legacy targets are intentionally removed from the input schema.
 
 * **Cookies** `cookies`: (Required) Your authentication cookie after logging into the [TikTok Creative Center](https://ads.tiktok.com/business/creativecenter/pc/en) platform. Way to obtain:
 
@@ -81,13 +100,12 @@ These settings are only used when the `Target` is set to `Ad Analytics`.
 
 ---
 
-### ⚙️ Ad Recommend Settings
+### ⚙️ Ad Keyframe Settings
 
-These settings are only used when the `Target` is set to `Ad Recommend`.
+These settings are only used when the `Target` is set to `Ad Keyframe`.
 
-* **Material id** `ad_recommend_material_id`: (Required) Obtain from the result of `Top Ads Dashboard` or `Top Ads Spotlight`.
-* **Industry** `ad_recommend_industry`: (Required) Industry for recommend ads. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_industry.json)
-* **Country** `ad_recommend_country`: (Required) Country for recommend ads. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_region.json)
+* **Material id** `ad_keyframe_material_id`: (Required) Obtain from the result of `Top Ads Dashboard` or `Top Ads Spotlight`.
+* **Metric** `ad_keyframe_metric`: (Required) Select specific keyframe metric to retrieve. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/ad_keyframe_metric.json).
 
 ---
 
@@ -101,19 +119,19 @@ These settings are only used when the `Target` is set to `Ad Percentile`.
 
 ---
 
-### ⚙️ Ad Keyframe Settings
+### ⚙️ Ad Recommend Settings
 
-These settings are only used when the `Target` is set to `Ad Keyframe`.
+These settings are only used when the `Target` is set to `Ad Recommend`.
 
-* **Material id** `ad_percentile_material_id`: (Required) Obtain from the result of `Top Ads Dashboard` or `Top Ads Spotlight`.
-* **Metric** `ad_percentile_metric`: (Required) Select specific percentile metric to retrieve. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/ad_percentile_metric.json).
-
+* **Material id** `ad_recommend_material_id`: (Required) Obtain from the result of `Top Ads Dashboard` or `Top Ads Spotlight`.
+* **Industry** `ad_recommend_industry`: (Required) Industry for recommend ads. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_industry.json)
+* **Country** `ad_recommend_country`: (Required) Country for recommend ads. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_region.json)
 
 ---
 
-### ⚙️ Keyword Insights Settings
+### ⚙️ Deprecated: Keyword Insights Settings
 
-These settings are only used when the `Target` is set to `Keyword Insights`.
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Keyword Insights` is no longer selectable or runnable.
 
 * **Search** `keyword_search`: (Optional) Search by keyword.
 * **Region** `keyword_region`: (Optional) Filter results by one or more geographical regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_region.json)
@@ -128,9 +146,9 @@ These settings are only used when the `Target` is set to `Keyword Insights`.
 
 ---
 
-### ⚙️ Keyword Insights (Related videos) Settings
+### ⚙️ Deprecated: Keyword Insights (Related videos) Settings
 
-These settings are only used when the `Target` is set to `Keyword Insights (Related videos)`.
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Keyword Insights (Related videos)` is no longer selectable or runnable.
 
 * **Keyword** `kvideos_keyword`: (Required) Get related videos by keyword.
 * **Region** `kvideos_region`: (Optional) Filter results by one or more geographical regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_region.json)
@@ -141,9 +159,9 @@ These settings are only used when the `Target` is set to `Keyword Insights (Rela
 
 ---
 
-### ⚙️ Keyword Insights (Keyword examples) Settings
+### ⚙️ Deprecated: Keyword Insights (Keyword examples) Settings
 
-These settings are only used when the `Target` is set to `Keyword Insights (Keyword examples)`.
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Keyword Insights (Keyword examples)` is no longer selectable or runnable.
 
 * **Keyword** `kexamples_keyword`: (Required) Get examples by keyword.
 * **Region** `kexamples_region`: (Optional) Filter results by one or more geographical regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/keyword_region.json)
@@ -157,9 +175,9 @@ These settings are only used when the `Target` is set to `Keyword Insights (Keyw
 
 ---
 
-### ⚙️ Keyword Insights (Related Keywords & Hashtags) Settings
+### ⚙️ Deprecated: Keyword Insights (Related Keywords & Hashtags) Settings
 
-These settings are only used when the `Target` is set to `Keyword Insights (Related Keywords & Hashtags)`.
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Keyword Insights (Related Keywords & Hashtags)` is no longer selectable or runnable.
 
 * **Keyword** `krelated_keyword`: (Required) Get related keywords or hashtags by keyword.
 * **Type** `krelated_type`: (Required) Get related content by type.
@@ -171,9 +189,9 @@ These settings are only used when the `Target` is set to `Keyword Insights (Rela
 
 ---
 
-### ⚙️ Creative Insights Settings
+### ⚙️ Deprecated: Creative Insights Settings
 
-These settings are only used when the `Target` is set to `Creative Insights`.
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Creative Insights` is no longer selectable or runnable.
 
 * **Industry** `creative_insights_industry`: (Required) Filter creatives by industry. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creative_insights_industry.json)
 * **Period type** `creative_insights_period_type`: (Required) Define the date filter type for the creatives data.
@@ -185,7 +203,9 @@ These settings are only used when the `Target` is set to `Creative Insights`.
 
 ---
 
-### ⚙️ Top Products Settings
+### ⚙️ Deprecated: Top Products Settings
+
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Top Products` is no longer selectable or runnable.
 
 * **Level of date** `top_products_level`: (Required) Define the level of date.
 * **Country** `top_products_country`: (Required) Filter products by country. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/top_products_country.json)
@@ -200,9 +220,9 @@ These settings are only used when the `Target` is set to `Creative Insights`.
 
 ---
 
-### ⚙️ Trending Hashtags Settings
+### ⚙️ Deprecated: Trending Hashtags Settings
 
-These settings are only used when the `Target` is set to `Trending Hashtags`.
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Trending Hashtags` is no longer selectable or runnable.
 
 * **Country** `hashtags_country`: (Required) Select the country to view its hashtags. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_country.json)
 * **Industry** `hashtags_industry`: (Optional) Filter hashtags by industry. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_industry.json)
@@ -214,9 +234,9 @@ These settings are only used when the `Target` is set to `Trending Hashtags`.
 
 ---
 
-### ⚙️ Hashtag Analytics Settings
+### ⚙️ Deprecated: Hashtag Analytics Settings
 
-These settings are only used when the `Target` is set to `Hashtag Analytics`.
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Hashtag Analytics` is no longer selectable or runnable.
 
 * **Hashtag name** `hashtag_analytics_hashtag_name`: (Required) Hashtag name. Obtain from the result of `Trending Hashtags`.
 * **Country** `hashtag_analytics_country`: (Required) Select the country to view its analytics data. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_country.json)
@@ -224,9 +244,9 @@ These settings are only used when the `Target` is set to `Hashtag Analytics`.
 
 ---
 
-### ⚙️ Trending Songs (Popular) Settings
+### ⚙️ Deprecated: Trending Songs (Popular) Settings
 
-These settings are only used when the `Target` is set to `Trending Songs (Popular)`.
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Trending Songs (Popular)` is no longer selectable or runnable.
 
 * **Country** `popular_country`: (Required) Select the country to view its popular songs. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/popular_country.json)
 * **Period** `popular_period`: (Required) Define the time frame for the trending songs data.
@@ -238,9 +258,9 @@ These settings are only used when the `Target` is set to `Trending Songs (Popula
 
 ---
 
-### ⚙️ Trending Songs (Breakout) Settings
+### ⚙️ Deprecated: Trending Songs (Breakout) Settings
 
-These settings are only used when the `Target` is set to `Trending Songs (Breakout)`.
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Trending Songs (Breakout)` is no longer selectable or runnable.
 
 * **Country** `breakout_country`: (Required) Select the country to view its breakout songs. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/breakout_country.json)
 * **Search** `breakout_search`: (Optional) Search by song or artist.
@@ -249,9 +269,9 @@ These settings are only used when the `Target` is set to `Trending Songs (Breako
 
 ---
 
-### ⚙️ Song Analytics Settings
+### ⚙️ Deprecated: Song Analytics Settings
 
-These settings are only used when the `Target` is set to `Song Analytics`.
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Song Analytics` is no longer selectable or runnable.
 
 * **Clip id** `song_analytics_clip_id`: (Required) Clip id. Obtain from the result of `Trending Songs (Popular)` or `Trending Songs (Breakout)`.
 * **Country** `song_analytics_country`: (Required) Select the country to view its analytics data. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/breakout_country.json)
@@ -259,9 +279,9 @@ These settings are only used when the `Target` is set to `Song Analytics`.
 
 ---
 
-### ⚙️ Trending Creators Settings
+### ⚙️ Deprecated: Trending Creators Settings
 
-These settings are only used when the `Target` is set to `Trending Creators`.
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Trending Creators` is no longer selectable or runnable.
 
 * **Creators country** `creators_country`: (Required) Select the geographical country of the creators. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creators_country.json)
 * **Audience country** `creators_audience_country`: (Optional) Filter creators by their audience's primary country. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/creators_audience_country.json)
@@ -273,9 +293,9 @@ These settings are only used when the `Target` is set to `Trending Creators`.
 
 ---
 
-### ⚙️ Trending Videos Settings
+### ⚙️ Deprecated: Trending Videos Settings
 
-These settings are only used when the `Target` is set to `Trending Videos`.
+Deprecated in 0.2.0. These settings are retained for historical reference only; `Trending Videos` is no longer selectable or runnable.
 
 * **Country** `videos_country`: (Required) Select the geographical country for trending videos. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/videos_country.json)
 * **Period** `videos_period`: (Required) Define the time frame for the trending videos data. [Options](https://github.com/lofe-w/tiktok-creative-center-scraper-public/blob/main/options/videos_period.json)
@@ -287,7 +307,7 @@ These settings are only used when the `Target` is set to `Trending Videos`.
 
 ## 📊 Output Structure
 
-The Actor returns a dataset of items. The structure of each item depends on the `target` you selected.
+The Actor returns a dataset of items. The structure of each item depends on the supported `target` you selected. Deprecated output samples are retained for historical reference only.
 
 **NOTE**: The following are sample structures. The actual output may contain more fields. Please refer to the output of a sample run for the exact schema.
 
@@ -473,7 +493,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Keyword Insights
+### 📊 Deprecated: Keyword Insights
 
 ```json
 {
@@ -517,7 +537,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Keyword Insights (Related videos)
+### 📊 Deprecated: Keyword Insights (Related videos)
 
 ```json
 {
@@ -536,7 +556,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Keyword Insights (Keyword examples)
+### 📊 Deprecated: Keyword Insights (Keyword examples)
 
 ```json
 {
@@ -568,7 +588,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Keyword Insights (Related Keywords & Hashtags)
+### 📊 Deprecated: Keyword Insights (Related Keywords & Hashtags)
 
 ```json
 {
@@ -589,7 +609,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Creative Insights
+### 📊 Deprecated: Creative Insights
 
 ```json
 {
@@ -624,7 +644,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Top Products
+### 📊 Deprecated: Top Products
 
 ```json
 {
@@ -680,7 +700,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Trending Hashtags
+### 📊 Deprecated: Trending Hashtags
 
 ```json
 {
@@ -747,7 +767,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Hashtag Analytics
+### 📊 Deprecated: Hashtag Analytics
 
 ```json
 {
@@ -836,7 +856,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Trending Songs (Popular) & Trending Songs (Breakout)
+### 📊 Deprecated: Trending Songs (Popular) & Trending Songs (Breakout)
 
 ```json
 {
@@ -909,7 +929,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Song Analytics
+### 📊 Deprecated: Song Analytics
 
 ```json
 {
@@ -989,7 +1009,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Trending Creators
+### 📊 Deprecated: Trending Creators
 
 ```json
 {
@@ -1049,7 +1069,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Trending Videos
+### 📊 Deprecated: Trending Videos
 
 ```json
 {
@@ -1114,7 +1134,7 @@ The trigger logic of the event is the number of items that return the result.
 
 If you encounter any issues or have feature requests, please use the **Issues** tab on the Actor's page in the Apify Console. Please provide a detailed description of the problem and the Run ID.
 
-## Limitations and Disclaimers
+## ⚠️ Limitations and Disclaimers
 
 * This Actor is not an official TikTok product and is not affiliated with or endorsed by TikTok, Inc.
 * The structure of the TikTok Creative Center website and its internal APIs may change at any time. I will do my best to maintain this Actor, but functionality is not guaranteed and occasional downtime may occur.
