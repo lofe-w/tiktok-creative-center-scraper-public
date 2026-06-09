@@ -1106,29 +1106,38 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 Pricing model: [Pay per event](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event)
 
-The trigger logic of the event is the number of items that return the result.
+The trigger logic of the event is the number of items that return the result. Deprecated targets are rejected before any upstream request or charge, so they do not have active pricing in 0.2.0.
 
-| Target                                                                                                                     | Cost          |
-|----------------------------------------------------------------------------------------------------------------------------|---------------|
-| [Top Ads Dashboard)](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)                              | 0.002$ / item |
-| [Top Ads Spotlight)](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)                         | 0.002$ / item |
-| [Ad Analytics](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)                            | 0.002$ / time |
-| [Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)                             | 0.002$ / time |
-| [Ad Percentile](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)                           | 0.002$ / time |
-| [Ad Recommend](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)                            | 0.002$ / time |
-| [Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)                                  | 0.002$ / item |
-| [Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)                 | 0.002$ / time |
-| [Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)            | 0.002$ / item |
-| [Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en) | 0.002$ / time |
-| [Creative Insights](https://ads.tiktok.com/business/creativecenter/creative-pattern/pc/en)                                 | 0.002$ / item |
-| [Top Products](https://ads.tiktok.com/business/creativecenter/top-products/pc/en)                                          | 0.002$ / item |
-| [Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)                      | 0.002$ / item |
-| [Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)                                     | 0.002$ / time |
-| [Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)                   | 0.002$ / item |
-| [Trending Songs Breakout](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)                  | 0.002$ / item |
-| [Song Analytics](https://ads.tiktok.com/business/creativecenter/song/fantasmas-7326640926458743557/pc/en)                  | 0.002$ / time |
-| [Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)                      | 0.002$ / item |
-| [Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)                                | 0.002$ / item |
+### Active targets
+
+| Target                                                                                             | Cost          |
+|----------------------------------------------------------------------------------------------------|---------------|
+| [Top Ads Dashboard](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)        | 0.002$ / item |
+| [Top Ads Spotlight](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)  | 0.002$ / item |
+| [Ad Analytics](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)    | 0.002$ / time |
+| [Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)     | 0.002$ / time |
+| [Ad Percentile](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)   | 0.002$ / time |
+| [Ad Recommend](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)    | 0.002$ / time |
+
+### Deprecated targets
+
+These targets are retained in the documentation only for historical reference. They are not selectable or runnable in 0.2.0.
+
+| Target                                                                                                                     | Pricing status       |
+|----------------------------------------------------------------------------------------------------------------------------|----------------------|
+| [Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)                                  | Deprecated; no charge |
+| [Keyword Insights (Related videos)](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en)                 | Deprecated; no charge |
+| [Keyword Insights (Keyword examples)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en)            | Deprecated; no charge |
+| [Keyword Insights (Related Keywords & Hashtags)](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en) | Deprecated; no charge |
+| [Creative Insights](https://ads.tiktok.com/business/creativecenter/creative-pattern/pc/en)                                 | Deprecated; no charge |
+| [Top Products](https://ads.tiktok.com/business/creativecenter/top-products/pc/en)                                          | Deprecated; no charge |
+| [Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en)                      | Deprecated; no charge |
+| [Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en)                                     | Deprecated; no charge |
+| [Trending Songs Popular](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)                   | Deprecated; no charge |
+| [Trending Songs Breakout](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en)                  | Deprecated; no charge |
+| [Song Analytics](https://ads.tiktok.com/business/creativecenter/song/fantasmas-7326640926458743557/pc/en)                  | Deprecated; no charge |
+| [Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en)                      | Deprecated; no charge |
+| [Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en)                                | Deprecated; no charge |
 
 ## 📞 Support
 
