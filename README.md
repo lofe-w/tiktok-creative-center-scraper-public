@@ -2,23 +2,52 @@
 
 [中文 README](https://github.com/lofe-w/tiktok-creative-center-scraper-public/blob/main/README.zh-CN.md)
 
-All In One! The definitive scraper for the official TikTok Creative Center surfaces available today. Reliably extract structured Top Ads data, deep ad analytics, keyframe performance, percentile benchmarks, and related ad recommendations for marketing intelligence, competitive research, and creative analysis.
+All In One! The definitive scraper for the official TikTok Creative Center surfaces available today. Reliably extract structured Top Ads data, deep ad analytics, keyframe performance, percentile benchmarks, related ad recommendations, trending hashtags, and hashtag analytics for marketing intelligence, competitive research, and creative analysis.
 
 [Start Now (On Apify)](https://apify.com/doliz/tiktok-creative-center-scraper)
 
 ## ✨ Key Features
 
 * **⚡️ Fast & Efficient**: Bypasses slow UI interactions by calling the backend API directly, saving you significant time and platform costs.
-* **🎯 All-in-one Official Scraping**: One Actor covering the current official TikTok Creative Center Top Ads workflow, including:
+* **🎯 All-in-one Official Scraping**: One Actor covering the current official TikTok Creative Center Top Ads and Hashtag trends workflows, including:
     * [Top Ads Dashboard](https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en)
     * [Top Ads Spotlight](https://ads.tiktok.com/business/creativecenter/tiktok-topads-spotlight/pc/en)
     * [Ad Analytics](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
     * [Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
     * [Ad Percentile](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
     * [Ad Recommend](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)
+    * [Trending Hashtags](https://ads.tiktok.com/creative/creativeCenter/trends/hashtag)
+    * [Hashtag Analytics](https://ads.tiktok.com/creative/creativeCenter/trends/hashtag)
 * **🔎 Powerful Filtering**: Utilize a rich set of input parameters to precisely target the data you need, mirroring the functionality of the Creative Center website.
 * **📦 Structured JSON Output**: Get clean, machine-readable data that is ready for dashboards, enrichment pipelines, competitive monitoring, and ad research workflows.
 * **🧭 Officially Aligned Scope**: TikTok has refocused the available Creative Center surfaces, and this Actor follows that current official product scope.
+
+## 📝 Creative Center Update & Migration Notes
+
+TikTok has refocused and reworked parts of Creative Center. This Actor follows the current official scope and supports the Top Ads workflow plus the current [Creative Center Hashtag trends page](https://ads.tiktok.com/creative/creativeCenter/trends/hashtag).
+
+First, review the target-level changes:
+
+| Status | Target | Current user impact |
+|---|---|---|
+| Supported | `top_ads_dashboard`, `top_ads_spotlight`, `ad_analytics`, `ad_keyframe`, `ad_percentile`, `ad_recommend` | These Top Ads targets remain selectable and keep their existing usage flow. |
+| Restored / Changed | `trending_hashtags`, `hashtag_analytics` | These target names are selectable again, but they now follow the current official Hashtag trends page instead of the old 0.1.0 hashtag pages. |
+| Removed | `keyword_insights`, `keyword_insights_videos`, `keyword_insights_examples`, `keyword_insights_related`, `creative_insights`, `top_products`, `trending_songs_popular`, `trending_songs_breakout`, `song_analytics`, `trending_creators`, `trending_videos` | These former Creative Center targets are no longer selectable. Saved/API inputs using them are rejected before any upstream request or charge. |
+
+For hashtag users upgrading from Actor `0.1.0`, review the target-specific input and output changes below. The goal is to match only the controls visible on the current official Hashtag trends page, so some old inputs were removed rather than kept as hidden/internal options.
+
+| Status | Target | 0.1.0 input or behavior | Current behavior |
+|---|---|---|---|
+| Removed | `trending_hashtags` | `hashtags_search` searched by hashtag text. | Removed because the current official page does not expose a hashtag search filter. |
+| Removed | `trending_hashtags` | `hashtags_new_to_top_100` filtered newly ranked hashtags. | Removed because the current official page does not expose this filter. |
+| Changed | `trending_hashtags` | `hashtags_period` accepted `7`, `30`, `120`. | Now accepts `7`, `30`, `90`, shown as `Last 7 days`, `Last 30 days`, `Last 90 days`. |
+| Changed | `trending_hashtags` | `hashtags_limit` allowed up to `60`. | Now allows up to `20`, matching the current official page request size. |
+| Changed | `trending_hashtags` | The old list output used `code` / `msg` / `data.list`. | The list output follows the current official API response, with fields such as `BaseResp`, `items`, `pagination`, `hashtagID`, and `popularityCurve`. |
+| Renamed | `hashtag_analytics` | `hashtag_analytics_hashtag_name` used a hashtag name such as `hoco`. | Replaced by `hashtag_analytics_hashtag_id`, obtained from a `Trending Hashtags` result or the official analytics page URL. |
+| Changed | `hashtag_analytics` | `hashtag_analytics_country` could be empty for `All regions`. | Now uses a specific country or region, defaulting to `United States`. |
+| Changed | `hashtag_analytics` | `hashtag_analytics_period` accepted `7`, `30`, `120`, `365`, `1095`. | Now accepts `7`, `30`, `90`, matching the current official page. |
+| Changed | `hashtag_analytics` | The old detail output used `code` / `msg` / `data.info`. | The detail output follows the current official API response, with fields such as `BaseResp`, `hashtagID`, `popularityCurve`, profile data, and video detail fields. |
+| Unchanged | `trending_hashtags`, `hashtag_analytics` | Pricing was `0.002$ / item` for Trending Hashtags and `0.002$ / time` for Hashtag Analytics. | Pricing is unchanged. |
 
 ## 💡 Best practices
 
@@ -42,7 +71,7 @@ A more robust implementation is to use [Message Queuing](https://en.wikipedia.or
 
 * **Target** `target`: (Required) Select the data source. Your choice determines which settings below are used.
 
-  One of `Top Ads Dashboard`, `Top Ads Spotlight`, `Ad Analytics`, `Ad Keyframe`, `Ad Percentile`, `Ad Recommend`.
+  One of `Top Ads Dashboard`, `Top Ads Spotlight`, `Ad Analytics`, `Ad Keyframe`, `Ad Percentile`, `Ad Recommend`, `Trending Hashtags`, `Hashtag Analytics`.
 
 * **Cookies** `cookies`: (Required) Your authentication cookie after logging into the [TikTok Creative Center](https://ads.tiktok.com/business/creativecenter/pc/en) platform. Way to obtain:
 
@@ -115,27 +144,27 @@ These settings are only used when the `Target` is set to `Ad Recommend`.
 
 ---
 
-## 📝 Creative Center Update
+### ⚙️ Trending Hashtags Settings
 
-TikTok has refocused and reworked parts of Creative Center. This Actor follows the current official scope and now focuses on the Top Ads workflow listed above: Dashboard, Spotlight, ad-level analytics, keyframes, percentile benchmarks, and recommendations.
+These settings are only used when the `Target` is set to `Trending Hashtags`.
 
-The former Creative Center targets below are no longer selectable in this Actor. Their original official links are kept here so existing users can recognize what changed. Some pages may redirect, show a new layout, or remain visible without the old stable data API; saved/API inputs using these targets are rejected before any upstream request or charge.
+* **Country** `hashtags_country`: (Required) Filter by country or region. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_country.json)
+* **Time period** `hashtags_period`: (Required) Filter by the website time range: `Last 7 days`, `Last 30 days`, or `Last 90 days`.
+* **Industry** `hashtags_industry`: (Optional) Filter by one official website industry. Choose `All Industries` to omit the industry filter. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_industry.json)
+* **Page** `hashtags_page`: (Required) Page number.
+* **Limit** `hashtags_limit`: (Required) Page size.
 
-| Former target | Original official page | Current status |
-|---|---|---|
-| Keyword Insights | [Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en) | Deprecated |
-| Keyword Insights related videos | [Keyword Insights](https://ads.tiktok.com/business/creativecenter/keyword-insights/pc/en) | Deprecated |
-| Keyword Insights keyword examples | [Keyword detail](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en) | Deprecated |
-| Keyword Insights related keywords & hashtags | [Keyword detail](https://ads.tiktok.com/business/creativecenter/tiktok-keyword/shoe/pc/en) | Deprecated |
-| Creative Insights | [Creative Insights](https://ads.tiktok.com/business/creativecenter/creative-pattern/pc/en) | Deprecated |
-| Top Products | [Top Products](https://ads.tiktok.com/business/creativecenter/top-products/pc/en) | Deprecated |
-| Trending Hashtags | [Trending Hashtags](https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/en) | Deprecated |
-| Hashtag Analytics | [Hashtag Analytics](https://ads.tiktok.com/business/creativecenter/hashtag/hoco/pc/en) | Deprecated |
-| Trending Songs Popular | [Trending Songs](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en) | Deprecated |
-| Trending Songs Breakout | [Trending Songs](https://ads.tiktok.com/business/creativecenter/inspiration/popular/music/pc/en) | Deprecated |
-| Song Analytics | [Song Analytics](https://ads.tiktok.com/business/creativecenter/song/fantasmas-7326640926458743557/pc/en) | Deprecated |
-| Trending Creators | [Trending Creators](https://ads.tiktok.com/business/creativecenter/inspiration/popular/creator/pc/en) | Deprecated |
-| Trending Videos | [Trending Videos](https://ads.tiktok.com/business/creativecenter/inspiration/popular/pc/en) | Deprecated |
+---
+
+### ⚙️ Hashtag Analytics Settings
+
+These settings are only used when the `Target` is set to `Hashtag Analytics`.
+
+* **Hashtag ID** `hashtag_analytics_hashtag_id`: (Required) Obtain from a `Trending Hashtags` result or from the official hashtag analytics page URL.
+* **Country** `hashtag_analytics_country`: (Required) Filter by country or region. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/hashtags_country.json)
+* **Time period** `hashtag_analytics_period`: (Required) Filter by the website time range: `Last 7 days`, `Last 30 days`, or `Last 90 days`.
+
+For the most reliable detail response, use a `hashtag_analytics_hashtag_id` from a `Trending Hashtags` result with the same country or region.
 
 ---
 
@@ -341,6 +370,8 @@ The trigger logic of the event is the number of items that return the result.
 | [Ad Keyframe](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)     | 0.002$ / time |
 | [Ad Percentile](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)   | 0.002$ / time |
 | [Ad Recommend](https://ads.tiktok.com/business/creativecenter/topads/7558904828435202056/pc/en)    | 0.002$ / time |
+| [Trending Hashtags](https://ads.tiktok.com/creative/creativeCenter/trends/hashtag)                 | 0.002$ / item |
+| [Hashtag Analytics](https://ads.tiktok.com/creative/creativeCenter/trends/hashtag)                 | 0.002$ / time |
 
 Deprecated targets are rejected before any upstream request or charge.
 
