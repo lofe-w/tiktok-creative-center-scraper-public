@@ -174,6 +174,11 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 **NOTE**: The following are sample structures. The actual output may contain more fields. Please refer to the output of a sample run for the exact schema.
 
+Successful data and user-actionable warnings/errors both return Dataset output. Recognized TikTok outcomes such as
+rate limiting, invalid login, permission rejection, or an explicit network failure return one sanitized, non-chargeable
+item so API clients and downstream Actors can react automatically. Only successful responses containing usable data
+trigger `fetch` charges.
+
 ---
 
 ### 📊 Top Ads Dashboard & Top Ads Spotlight

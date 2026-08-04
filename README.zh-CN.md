@@ -174,6 +174,10 @@ Actor 会返回 dataset items。每个 item 的结构取决于你选择的 `targ
 
 **说明**：下面是简化后的结构示例。实际输出可能包含更多字段，请以实际运行结果为准。
 
+成功数据和需要用户处理的 Warn/Error 都会返回 Dataset Output。限流、登录失效、权限拒绝或明确网络
+失败等已识别 TikTok 结果会返回一个经过脱敏且不计费的 item，便于 API 客户端或下游 Actor 自动处理；
+只有包含有效数据的成功响应才触发 `fetch` 计费。
+
 ### 📊 Top Ads Dashboard & Top Ads Spotlight
 
 ```json
