@@ -30,7 +30,8 @@ First, review the target-level changes:
 
 | Status | Target | Current user impact |
 |---|---|---|
-| Supported | `top_ads_dashboard`, `top_ads_spotlight`, `ad_analytics`, `ad_keyframe`, `ad_percentile`, `ad_recommend` | These Top Ads targets remain selectable and keep their existing usage flow. |
+| Changed | `top_ads_dashboard` | `dashboard_region` now exposes the 28 regions currently shown by Top Ads Dashboard. The existing array input and multi-region behavior are unchanged. Saved values outside the current list must be replaced. |
+| Supported | `top_ads_spotlight`, `ad_analytics`, `ad_keyframe`, `ad_percentile`, `ad_recommend` | These Top Ads targets remain selectable and keep their existing usage flow. |
 | Restored / Changed | `trending_hashtags`, `hashtag_analytics` | These target names are selectable again, but they now follow the current official Hashtag trends page instead of the old 0.1.0 hashtag pages. |
 | Removed | `keyword_insights`, `keyword_insights_videos`, `keyword_insights_examples`, `keyword_insights_related`, `creative_insights`, `top_products`, `trending_songs_popular`, `trending_songs_breakout`, `song_analytics`, `trending_creators`, `trending_videos` | These former Creative Center targets are no longer selectable. Saved/API inputs using them are rejected before any upstream request or charge. |
 
@@ -84,7 +85,7 @@ A more robust implementation is to use [Message Queuing](https://en.wikipedia.or
 These settings are only used when the `Target` is set to `Top Ads Dashboard`.
 
 * **Keyword** `dashboard_search`: (Optional) Search by brand or product keywords.
-* **Region** `dashboard_region`: (Optional) Filter results by one or more geographical regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_region.json)
+* **Region** `dashboard_region`: (Optional) Filter by one or more of the 28 regions currently shown in Top Ads Dashboard. The array input preserves the selected order. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/top_ads_dashboard_region.json)
 * **Industry** `dashboard_industry`: (Optional) Filter ads by one or more industries. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_industry.json)
 * **Objective** `dashboard_objective`: (Optional) Filter ads by their campaign marketing objective. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_objective.json)
 * **Period** `dashboard_period`: (Required) Filter ads by their publication period. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_period.json)
@@ -182,6 +183,9 @@ trigger `fetch` charges.
 ---
 
 ### 📊 Top Ads Dashboard & Top Ads Spotlight
+
+Industry identifiers are returned exactly as TikTok provides them. A response can therefore contain an
+`industry_key` such as `label_14110000000` even when that identifier is not present in the current input options.
 
 ```json
 {

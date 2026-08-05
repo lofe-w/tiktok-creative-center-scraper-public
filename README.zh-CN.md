@@ -30,7 +30,8 @@ TikTok 已经重构并调整了 Creative Center 的部分页面。本 Actor 跟�
 
 | Status | Target | 当前用户影响 |
 |---|---|---|
-| Supported | `top_ads_dashboard`、`top_ads_spotlight`、`ad_analytics`、`ad_keyframe`、`ad_percentile`、`ad_recommend` | 这些 Top Ads target 仍然可选，并保持原有使用流程。 |
+| Changed | `top_ads_dashboard` | `dashboard_region` 现在只公开 Top Ads Dashboard 当前显示的 28 个地区；现有数组输入和多地区行为保持不变。旧 saved input 若使用当前列表之外的值，需要改为当前支持地区。 |
+| Supported | `top_ads_spotlight`、`ad_analytics`、`ad_keyframe`、`ad_percentile`、`ad_recommend` | 这些 Top Ads target 仍然可选，并保持原有使用流程。 |
 | Restored / Changed | `trending_hashtags`、`hashtag_analytics` | 这两个 target 重新可选，但现在对齐当前官方 Hashtag trends 页面，不再使用 0.1.0 的旧 Hashtag 页面。 |
 | Removed | `keyword_insights`、`keyword_insights_videos`、`keyword_insights_examples`、`keyword_insights_related`、`creative_insights`、`top_products`、`trending_songs_popular`、`trending_songs_breakout`、`song_analytics`、`trending_creators`、`trending_videos` | 这些旧 Creative Center target 不再可选；旧 saved/API input 继续传入时，会在发起上游请求和计费前直接拒绝。 |
 
@@ -84,7 +85,7 @@ TikTok 已经重构并调整了 Creative Center 的部分页面。本 Actor 跟�
 当 `Target` 设置为 `Top Ads Dashboard` 时使用这些参数。
 
 * **Keyword** `dashboard_search`：（可选）按品牌或产品关键词搜索。
-* **Region** `dashboard_region`：（可选）按一个或多个地区筛选。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_region.json)
+* **Region** `dashboard_region`：（可选）按 Top Ads Dashboard 当前显示的 28 个地区中的一个或多个地区筛选；数组输入会保留选择顺序。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/top_ads_dashboard_region.json)
 * **Industry** `dashboard_industry`：（可选）按一个或多个行业筛选广告。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_industry.json)
 * **Objective** `dashboard_objective`：（可选）按广告投放目标筛选。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_objective.json)
 * **Period** `dashboard_period`：（必填）按发布时间周期筛选。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-creative-center-scraper-public/refs/heads/main/options/dashboard_period.json)
@@ -179,6 +180,9 @@ Actor 会返回 dataset items。每个 item 的结构取决于你选择的 `targ
 只有包含有效数据的成功响应才触发 `fetch` 计费。
 
 ### 📊 Top Ads Dashboard & Top Ads Spotlight
+
+行业标识会按 TikTok 上游返回值原样输出。因此，即使某个标识不在当前输入选项中，响应仍可能包含
+`industry_key: "label_14110000000"` 之类的值。
 
 ```json
 {
